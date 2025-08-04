@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru" class="light-theme">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#2575fc" />
+    <title>Моё портфолио</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <!-- Яндекс.Метрика -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(YANDEX_COUNTER_ID, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/YANDEX_COUNTER_ID" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <p>Загрузка портфолио...</p>
+    </div>
+
+    <!-- Главная секция -->
+    <section id="home" class="fade-in">
+        <h1>Привет, я — [Твоё имя]</h1>
+        <p>Frontend-разработчик | Создаю красивые и функциональные веб-решения</p>
+        <a href="#portfolio" class="btn">Смотреть проекты</a>
+        <button id="downloadPdf" class="btn" style="margin-top: 1rem;">Скачать резюме (PDF)</button>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about" class="fade-in">
+        <h2>Обо мне</h2>
+        <div class="content">
+            <p>Здесь будет краткая информация обо мне. Расскажу о своём опыте, навыках и целях. Место для личной истории и профессионального пути.</p>
+            <p>Я работаю в сфере веб-разработки более 3 лет, специализируюсь на фронтенде, люблю чистый код и красивый UX.</p>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section id="portfolio" class="fade-in">
+        <h2>Портфолио</h2>
+        <div class="portfolio-grid">
+            <div class="project fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Проект+1" alt="Проект 1">
+                <div class="project-content">
+                    <h3>Веб-приложение для управления задачами</h3>
+                    <p>Разработано на React и Firebase. Позволяет создавать, редактировать и отслеживать задачи.</p>
+                    <a href="#" target="_blank">Смотреть проект</a>
+                </div>
+            </div>
+            <div class="project fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Проект+2" alt="Проект 2">
+                <div class="project-content">
+                    <h3>Сайт-лендинг для стартапа</h3>
+                    <p>Адаптивный дизайн, анимации, интеграция с формой сбора лидов.</p>
+                    <a href="#" target="_blank">Смотреть проект</a>
+                </div>
+            </div>
+            <div class="project fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Проект+3" alt="Проект 3">
+                <div class="project-content">
+                    <h3>E-commerce магазин</h3>
+                    <p>Полноценный интернет-магазин с корзиной, оплатой и админкой.</p>
+                    <a href="#" target="_blank">Смотреть проект</a>
+                </div>
+            </div>
+            <div class="project fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Проект+4" alt="Проект 4">
+                <div class="project-content">
+                    <h3>Мобильное приложение (PWA)</h3>
+                    <p>Прогрессивное веб-приложение с офлайн-режимом и push-уведомлениями.</p>
+                    <a href="#" target="_blank">Смотреть проект</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сертификаты -->
+    <section id="certificates" class="fade-in">
+        <h2>Сертификаты и дипломы</h2>
+        <div class="certificates-grid">
+            <div class="cert fade-in">
+                <img src="https://via.placeholder.com/300x180?text=Сертификат+1" alt="Сертификат 1">
+                <div class="cert-content">
+                    <h3>Frontend Разработка</h3>
+                    <p>Учебный центр "Веб-школа", 2023</p>
+                </div>
+            </div>
+            <div class="cert fade-in">
+                <img src="https://via.placeholder.com/300x180?text=Сертификат+2" alt="Сертификат 2">
+                <div class="cert-content">
+                    <h3>JavaScript: Углублённое изучение</h3>
+                    <p>Платформа "Stepik", 2022</p>
+                </div>
+            </div>
+            <div class="cert fade-in">
+                <img src="https://via.placeholder.com/300x180?text=Сертификат+3" alt="Сертификат 3">
+                <div class="cert-content">
+                    <h3>UX/UI Дизайн</h3>
+                    <p>Курсы "Skillbox", 2021</p>
+                </div>
+            </div>
+            <div class="cert fade-in">
+                <img src="https://via.placeholder.com/300x180?text=Сертификат+4" alt="Сертификат 4">
+                <div class="cert-content">
+                    <h3>Диплом о высшем образовании</h3>
+                    <p>МГУ, специальность "Информационные технологии", 2020</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section id="contact" class="fade-in">
+        <h2>Свяжитесь со мной</h2>
+        <form id="contactForm" action="https://formspree.io/f/ВАШ-ИДЕНТИФИКАТОР" method="POST">
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Сообщение</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn">Отправить</button>
+            <div id="formStatus"></div>
+        </form>
+    </section>
+
+    <!-- Кнопка "Наверх" -->
+    <button id="scrollToTop" title="Наверх">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Шапка -->
+    <header>
+        <nav>
+            <div class="logo">Портфолио</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#about" class="nav-link">Обо мне</a></li>
+                <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+                <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
+            </ul>
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Соцсети -->
+        <div class="social-icons">
+            <a href="https://github.com/твой-ник" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/твой-ник" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://t.me/твой-ник" target="_blank" title="Telegram">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="mailto:you@example.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <!-- Переключатель темы -->
+        <button id="themeToggle" title="Сменить тему">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <!-- PWA Подсказка -->
+    <div id="installPrompt" class="hidden">
+        <p>Установить приложение на устройство?</p>
+        <button id="installBtn">Установить</button>
+        <button id="installClose">×</button>
+    </div>
+
+    <!-- Скрытый блок для печати PDF -->
+    <div id="print-resume" style="display: none;">
+        <h1>[Твоё Имя]</h1>
+        <p><strong>Frontend-разработчик</strong></p>
+        <p>Email: you@example.com | Телефон: +7 (XXX) XXX-XX-XX</p>
+        <p>GitHub: github.com/твой-ник | Telegram: @твой-ник</p>
+
+        <h2>Обо мне</h2>
+        <p>Разработчик с опытом более 3 лет. Специализируюсь на создании адаптивных, доступных и красивых веб-интерфейсов с использованием HTML, CSS, JavaScript, React.</p>
+
+        <h2>Навыки</h2>
+        <ul>
+            <li>HTML5, CSS3, SCSS</li>
+            <li>JavaScript (ES6+), TypeScript</li>
+            <li>React, Redux, Next.js</li>
+            <li>Git, Webpack, Vite</li>
+            <li>Responsive Design, Accessibility</li>
+        </ul>
+
+        <h2>Опыт работы</h2>
+        <p><strong>Frontend-разработчик</strong> — ООО "ТехноЛаб", 2021 — настоящее время</p>
+        <ul>
+            <li>Разработка SPA на React</li>
+            <li>Оптимизация производительности</li>
+            <li>Командная работа через Git</li>
+        </ul>
+
+        <h2>Образование</h2>
+        <p>Бакалавр информационных технологий, МГУ, 2020</p>
+
+        <h2>Портфолио</h2>
+        <p>• Управление задачами (React + Firebase)<br>
+           • E-commerce магазин (React, Redux, Stripe)<br>
+           • PWA для заметок (Workbox, IndexedDB)</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
