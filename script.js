@@ -91,4 +91,61 @@ scrollToTopBtn?.addEventListener('click', () => {
 const form = document.getElementById('contactForm');
 const status = document.getElementById('formStatus');
 
-form?.addEventListener
+form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    if (status) status.textContent = 'Отправка...';
+
+    try {
+        const res = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+            if (status) status.textContent = 'Сообщение отправлено!';
+            form.reset();
+            setTimeout(() => { if (status) status.textContent = ''; }, 3000);
+        } else {
+            throw new Error();
+        }
+    } catch (err) {
+        if (status) status.textContent = 'Ошибка. Попробуйте позже.';
+    }
+});
+
+// === PWA: подсказка об установке ===
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const prompt = document.getElementById('installPrompt');
+    if (prompt) {
+        prompt.classList.remove('hidden');
+    }
+});
+
+document.getElementById('installBtn')?.addEventListener('click', () => {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => {
+            deferredPrompt = null;
+            document.getElementById('installPrompt')?.classList.add('hidden');
+        });
+    }
+});
+
+document.getElementById('installClose')?.addEventListener('click', () => {
+    document.getElementById('installPrompt')?.classList.add('hidden');
+});
+
+// === Service Worker для PWA ===
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('SW зарегистрирован'))
+            .catch(err => console.log('Ошибка:', err));
+    });
+}
