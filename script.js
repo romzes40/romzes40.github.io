@@ -1,44 +1,4 @@
-// === Preloader ===
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(() => {
-            preloader.classList.add('fade-out');
-            setTimeout(() => {
-                if (preloader.parentNode) {
-                    preloader.remove();
-                }
-            }, 500);
-        }, 500);
-    }
-});
-
-// === Тема ===
-const themeToggle = document.getElementById('themeToggle');
-const icon = themeToggle?.querySelector('i');
-const body = document.body;
-
-const savedTheme = localStorage.getItem('theme') || 'light';
-body.classList.replace('light-theme', savedTheme + '-theme');
-if (icon && savedTheme === 'dark') {
-    icon.classList.replace('fa-moon', 'fa-sun');
-} else if (icon) {
-    icon.classList.replace('fa-sun', 'fa-moon');
-}
-
-themeToggle?.addEventListener('click', () => {
-    if (body.classList.contains('light-theme')) {
-        body.classList.replace('light-theme', 'dark-theme');
-        localStorage.setItem('theme', 'dark');
-        icon?.classList.replace('fa-moon', 'fa-sun');
-    } else {
-        body.classList.replace('dark-theme', 'light-theme');
-        localStorage.setItem('theme', 'light');
-        icon?.classList.replace('fa-sun', 'fa-moon');
-    }
-});
-
-// === Анимации при прокрутке ===
+// Анимации при прокрутке
 const fadeElements = document.querySelectorAll('.fade-in');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -50,102 +10,39 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeElements.forEach(el => observer.observe(el));
 
-// === Бургер-меню ===
-const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
-
-burger?.addEventListener('click', () => {
-    navLinks?.classList.toggle('open');
-});
-
-// === Подсветка активного пункта меню ===
-const sections = document.querySelectorAll('section');
-const navLinksAll = document.querySelectorAll('.nav-link');
-
-const makeActive = () => {
-    let index = sections.length;
-    while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
-    navLinksAll.forEach(link => link.classList.remove('active'));
-    navLinksAll[index]?.classList.add('active');
-};
-
-window.addEventListener('scroll', makeActive);
-window.addEventListener('load', makeActive);
-
-// === Кнопка "Наверх" ===
+// Кнопка "Наверх"
 const scrollToTopBtn = document.getElementById('scrollToTop');
 window.addEventListener('scroll', () => {
-    if (scrollToTopBtn) {
-        if (window.scrollY > 500) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
-        }
+    if (window.scrollY > 500) {
+        scrollToTopBtn.classList.add('show');
+    } else {
+        scrollToTopBtn.classList.remove('show');
     }
 });
-scrollToTopBtn?.addEventListener('click', () => {
+
+scrollToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// === Форма обратной связи ===
-const form = document.getElementById('contactForm');
-const status = document.getElementById('formStatus');
+// Тема
+const themeToggle = document.getElementById('themeToggle');
+const icon = themeToggle.querySelector('i');
+const body = document.body;
 
-form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    if (status) status.textContent = 'Отправка...';
+const savedTheme = localStorage.getItem('theme') || 'light';
+body.classList.remove('light-theme', 'dark-theme');
+body.classList.add(savedTheme + '-theme');
+icon.classList.toggle('fa-moon', savedTheme === 'light');
+icon.classList.toggle('fa-sun', savedTheme === 'dark');
 
-    try {
-        const res = await fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-            if (status) status.textContent = 'Сообщение отправлено!';
-            form.reset();
-            setTimeout(() => { if (status) status.textContent = ''; }, 3000);
-        } else {
-            throw new Error();
-        }
-    } catch (err) {
-        if (status) status.textContent = 'Ошибка. Попробуйте позже.';
+themeToggle.addEventListener('click', () => {
+    if (body.classList.contains('light-theme')) {
+        body.classList.replace('light-theme', 'dark-theme');
+        localStorage.setItem('theme', 'dark');
+        icon.classList.replace('fa-moon', 'fa-sun');
+    } else {
+        body.classList.replace('dark-theme', 'light-theme');
+        localStorage.setItem('theme', 'light');
+        icon.classList.replace('fa-sun', 'fa-moon');
     }
 });
-
-// === PWA: подсказка об установке ===
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    const prompt = document.getElementById('installPrompt');
-    if (prompt) {
-        prompt.classList.remove('hidden');
-    }
-});
-
-document.getElementById('installBtn')?.addEventListener('click', () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-            deferredPrompt = null;
-            document.getElementById('installPrompt')?.classList.add('hidden');
-        });
-    }
-});
-
-document.getElementById('installClose')?.addEventListener('click', () => {
-    document.getElementById('installPrompt')?.classList.add('hidden');
-});
-
-// === Service Worker для PWA ===
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('SW зарегистрирован'))
-            .catch(err => console.log('Ошибка:', err));
-    });
-}
