@@ -106,27 +106,31 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-// === PWA Install Prompt ===
+// === PWA: подсказка об установке ===
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    document.getElementById('installPrompt').classList.remove('hidden');
+
+    const prompt = document.getElementById('installPrompt');
+    if (prompt) {
+        prompt.classList.remove('hidden');
+    }
 });
 
-document.getElementById('installBtn').addEventListener('click', () => {
+document.getElementById('installBtn')?.addEventListener('click', () => {
     if (deferredPrompt) {
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then(() => {
             deferredPrompt = null;
-            document.getElementById('installPrompt').classList.add('hidden');
+            document.getElementById('installPrompt')?.classList.add('hidden');
         });
     }
 });
 
-document.getElementById('installClose').addEventListener('click', () => {
-    document.getElementById('installPrompt').classList.add('hidden');
+document.getElementById('installClose')?.addEventListener('click', () => {
+    document.getElementById('installPrompt')?.classList.add('hidden');
 });
 
 // === Service Worker ===
@@ -136,4 +140,5 @@ if ('serviceWorker' in navigator) {
             .then(reg => console.log('SW зарегистрирован'))
             .catch(err => console.log('Ошибка:', err));
     });
+
 });
