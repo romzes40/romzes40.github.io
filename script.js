@@ -1,4 +1,4 @@
-// === Принудительное скрытие прелоадера через 2 секунды (на всякий случай) ===
+// === Принудительное скрытие прелоадера через 2 секунды ===
 setTimeout(() => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
     
     if (preloader) {
-        // Убираем прелоадер через 1 секунду после загрузки DOM
         setTimeout(() => {
             preloader.classList.add('fade-out');
             setTimeout(() => {
