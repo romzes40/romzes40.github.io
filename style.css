@@ -207,7 +207,7 @@ header {
     list-style: none;
     gap: 2.5rem;
     position: absolute;
-    right: 5%;
+    right: 220px; /* Оставим место для кнопки справа */
 }
 
 .nav-links a {
@@ -237,6 +237,27 @@ header {
 .nav-links a:hover {
     color: #FFD700;
     transform: scale(1.05);
+}
+
+/* === Кнопка "Связаться со мной" в шапке === */
+.header-contact-btn {
+    background: #FFD700;
+    color: #000;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    z-index: 101;
+    white-space: nowrap;
+}
+
+.header-contact-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
 }
 
 /* === Кнопка "Наверх" === */
@@ -416,7 +437,7 @@ header {
 
 /* =============== МОБИЛЬНАЯ ВЕРСИЯ =============== */
 @media (max-width: 768px) {
-    /* Удаляем шапку полностью на мобильных */
+    /* Удаляем шапку на мобильных */
     header {
         display: none;
     }
