@@ -153,30 +153,56 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Шапка -->
-    <header>
+    <!-- Шапка (десктопная версия) -->
+    <header class="desktop-header">
         <!-- Логотип -->
         <div class="logo">
             <i class="fas fa-arrow-right"></i> romzes40
         </div>
 
-        <!-- Меню: левая часть -->
-        <ul class="nav-left">
+        <!-- Меню -->
+        <ul class="nav-links">
             <li><a href="#home" class="nav-link">Главная</a></li>
             <li><a href="#about" class="nav-link">Обо мне</a></li>
+            <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+            <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
         </ul>
 
         <!-- Кнопка "Связаться со мной" -->
         <button class="header-contact-btn">
             Связаться со мной
         </button>
+    </header>
 
-        <!-- Меню: правая часть -->
-        <ul class="nav-right">
+    <!-- Мобильное меню (внизу экрана) -->
+    <nav class="mobile-menu">
+        <!-- Бургер-меню (слева) -->
+        <div class="burger">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </div>
+
+        <!-- Кнопка "Связаться со мной" (по центру) -->
+        <button class="mobile-contact-btn">
+            Связаться со мной
+        </button>
+
+        <!-- Кнопка "Назад" (справа) -->
+        <button class="mobile-back-btn" title="Назад">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+    </nav>
+
+    <!-- Выпадающее меню (бургер) -->
+    <div class="mobile-dropdown-menu">
+        <ul>
+            <li><a href="#home" class="nav-link">Главная</a></li>
+            <li><a href="#about" class="nav-link">Обо мне</a></li>
             <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
             <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
         </ul>
-    </header>
+    </div>
 
     <script src="script.js"></script>
 </body>
