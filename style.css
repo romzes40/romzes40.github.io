@@ -99,7 +99,7 @@ section {
     box-shadow: 0 12px 25px rgba(255, 215, 0, 0.7);
 }
 
-/* === Шапка === */
+/* === Шапка — по умолчанию сверху === */
 header {
     position: fixed;
     top: 0;
@@ -138,25 +138,18 @@ header {
     font-size: 0.9rem;
 }
 
-/* === Навигация === */
+/* === Навигация — гибкая, не убегает === */
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2.5rem;
-    position: absolute;
-    right: 5%;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #FFD700;
+    /* Убираем position: absolute и right: 5% */
+    margin: 0 auto;
+    padding: 0 2rem;
+    /* Ограничиваем ширину, чтобы не убегало */
+    max-width: 800px;
+    justify-content: center;
+    /* Для десктопа — всегда видно */
 }
 
 /* === Кнопка "Связаться" === */
@@ -210,6 +203,7 @@ header {
 
 /* =============== МОБИЛЬНАЯ ВЕРСИЯ =============== */
 @media (max-width: 768px) {
+    /* Шапка — внизу */
     header {
         top: auto;
         bottom: 0;
@@ -218,10 +212,12 @@ header {
         justify-content: center;
     }
 
+    /* Скрываем логотип */
     .logo {
         display: none;
     }
 
+    /* Бургер — слева */
     .burger {
         position: absolute;
         left: 5%;
@@ -233,6 +229,15 @@ header {
         color: white;
     }
 
+    .burger i {
+        transition: transform 0.3s ease;
+    }
+
+    .burger.open i {
+        transform: rotate(180deg);
+    }
+
+    /* Меню — выпадает вверх, по умолчанию скрыто */
     .nav-links {
         position: fixed;
         bottom: 56px;
@@ -247,12 +252,16 @@ header {
         border-bottom: 1px solid rgba(255,255,255,0.2);
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
         transition: clip-path 0.4s ease;
+        margin: 0;
+        max-width: none;
+        width: 100%;
     }
 
     .nav-links.open {
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
     }
 
+    /* Кнопка "Связаться" — по центру */
     .header-contact-btn {
         position: static;
         margin: 0 auto;
@@ -261,6 +270,7 @@ header {
         padding: 0.6rem 1rem;
     }
 
+    /* Адаптация секций */
     section {
         padding: 3rem 5%;
     }
