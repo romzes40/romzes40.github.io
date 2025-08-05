@@ -160,3 +160,21 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.log('Ошибка:', err));
     });
 }
+
+// === Анимация шапки при прокрутке ===
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Запуск при загрузке (на случай, если страница открыта не с начала)
+window.addEventListener('load', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    }
+});
