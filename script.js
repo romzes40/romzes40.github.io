@@ -40,25 +40,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Бургер-меню ===
     const burger = document.querySelector('.burger');
-    const navLinks = document.querySelector('.nav-links');
+    const navWrapper = document.querySelector('.nav-wrapper');
 
-    if (burger && navLinks) {
+    if (burger && navWrapper) {
         burger.addEventListener('click', (e) => {
             e.stopPropagation();
-            navLinks.classList.toggle('open');
+            navWrapper.classList.toggle('open');
             burger.classList.toggle('open');
         });
 
+        // Закрытие при клике на пункт
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
+                navWrapper.classList.remove('open');
                 burger.classList.remove('open');
             });
         });
 
+        // Закрытие при клике вне меню
         document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
-                navLinks.classList.remove('open');
+            if (!navWrapper.contains(e.target) && !burger.contains(e.target)) {
+                navWrapper.classList.remove('open');
                 burger.classList.remove('open');
             }
         });
