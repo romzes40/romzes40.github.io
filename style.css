@@ -15,7 +15,7 @@ body {
     scroll-behavior: smooth;
 }
 
-/* === Убираем тяжёлые эффекты — фикс тормозов === */
+/* === Все секции === */
 section {
     min-height: 100vh;
     display: flex;
@@ -26,8 +26,6 @@ section {
     margin: 0 auto;
     width: 100%;
 }
-
-/* Убрали ::before, backdrop-filter, box-shadow — всё, что тормозит */
 
 /* === Анимации === */
 .fade-in {
@@ -193,11 +191,12 @@ header {
     z-index: 1000;
     background: #2575fc;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: 0.5rem 0;
+    padding: 0.8rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    height: 70px;
 }
 
 /* === Кнопка "Связаться" в шапке === */
@@ -212,6 +211,7 @@ header {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    z-index: 101;
 }
 
 .header-contact-btn:hover {
@@ -282,191 +282,24 @@ header {
     transform: scale(1.05);
 }
 
-/* === Переключатель темы === */
-#themeToggle {
-    position: absolute;
-    right: calc(5% + 60px); /* Справа от меню */
-    width: 46px;
-    height: 46px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 101;
-}
-
-#themeToggle:hover {
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-
 /* === Бургер-меню === */
 .burger {
     display: none;
-}
-
-/* === Кнопка "Наверх" — увеличена === */
-#scrollToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background: #2575fc;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    right: 5%;
+    top: 1.2rem;
     cursor: pointer;
-    font-size: 1.4rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease;
-    z-index: 1000;
-    box-shadow: 0 8px 20px rgba(37, 117, 252, 0.5);
+    z-index: 101;
 }
 
-#scrollToTop.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-#scrollToTop:hover {
-    transform: scale(1.1);
-    background: #1a5ed1;
-}
-
-/* === PWA Подсказка === */
-#installPrompt {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.95);
-    color: #333;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    z-index: 1000;
-    max-width: 320px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-}
-
-#installPrompt button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.95rem;
-}
-
-#installBtn {
-    background: #2575fc;
-    color: white;
-}
-
-#installClose {
-    background: #e0e0e0;
-    color: #333;
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* === Форма === */
-#contact {
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-
-.form-group label {
+.burger-line {
     display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.9rem;
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #FFD700;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-}
-
-#formStatus {
-    margin-top: 1rem;
-    color: #d32f2f;
-    font-weight: 500;
-}
-
-/* === Preloader === */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #121212;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease-out;
-}
-
-#preloader.fade-out {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #2575fc;
-    border-radius: 50%;
-    animation: spin 1.2s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#preloader p {
-    margin-top: 1.5rem;
-    color: #e0e0e0;
-    font-size: 1.2rem;
-    font-weight: 500;
+    width: 30px;
+    height: 3px;
+    background: white;
+    margin: 6px 0;
+    border-radius: 2px;
+    transition: 0.3s;
 }
 
 /* === Мобильная адаптация === */
@@ -483,40 +316,71 @@ header {
         padding: 3rem 5%;
     }
 
+    /* Шапка — растянута на всю ширину */
+    header {
+        padding: 0.8rem 0;
+        justify-content: center;
+        height: auto;
+        min-height: 70px;
+    }
+
     .logo {
         left: 5%;
         font-size: 1.4rem;
     }
 
-    .nav-links {
+    .header-contact-btn {
+        position: absolute;
+        top: 1rem;
         right: 5%;
-        gap: 1.5rem;
-        flex-direction: column;
-        background: #2575fc;
-        padding: 1rem 0;
-        border-radius: 10px;
-        width: 80%;
+        z-index: 101;
+    }
+
+    /* Скрытое меню */
+    .nav-links {
+        position: fixed;
         top: 70px;
+        left: 0;
+        right: 0;
+        background: #2575fc;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0;
+        gap: 1.8rem;
+        z-index: 100;
+        border-top: 1px solid rgba(255,255,255,0.2);
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease;
     }
 
     .nav-links.open {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
+    .nav-links a {
+        color: white !important;
+        font-size: 1.2rem;
+    }
+
     .burger {
         display: block;
-        position: absolute;
-        right: 5%;
-        top: 1rem;
-        z-index: 101;
     }
 
-    #themeToggle {
-        right: 60px;
+    .burger.open .burger-line:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
     }
 
+    .burger.open .burger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger.open .burger-line:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* На малых экранах — уменьшаем кнопку */
     .header-contact-btn {
-        display: none;
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
     }
 }
