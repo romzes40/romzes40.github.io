@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#2575fc" />
+    <title>Моё портфолио</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <p>Загрузка портфолио...</p>
+    </div>
+
+    <!-- Главная секция -->
+    <section id="home" class="fade-in">
+        <h1>Привет, я — <span class="highlight">Роман</span></h1>
+        <p>Специалист по контекстной рекламе в Яндекс</p>
+        <a href="#portfolio" class="btn btn-yellow">Смотреть проекты</a>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about" class="fade-in">
+        <h2>Обо мне</h2>
+        <div class="content">
+            <p>Директолог с опытом более 1 года. Настраиваю и веду кампании Яндекс.Директ профессионально. Использую Яндекс Тег Менеджер — Вам не придётся переделывать сайт для отслеживания конверсий.</p>
+            <p>Работаю с разными нишами: от малого бизнеса до крупных компаний. Помогаю увеличить трафик, снизить стоимость лида и улучшить конверсию.</p>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section id="portfolio" class="fade-in">
+        <h2>Портфолио</h2>
+        <div class="portfolio-grid">
+            <div class="project fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Проект+1" alt="Проект 1">
+                <div class="project-content">
+                    <h3>Настройка кампании для клиники</h3>
+                    <p>Яндекс.Директ, Яндекс.Метрика, ЯТМ. Увеличение конверсии на 40%</p>
+                    <a href="#" target="_blank">Смотреть кейс</a>
+                </div>
+            </div>
+            <div class="project fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Проект+2" alt="Проект 2">
+                <div class="project-content">
+                    <h3>Реклама для интернет-магазина</h3>
+                    <p>Настройка РСЯ, ремаркетинг, автоматические стратегии</p>
+                    <a href="#" target="_blank">Смотреть кейс</a>
+                </div>
+            </div>
+            <div class="project fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Проект+3" alt="Проект 3">
+                <div class="project-content">
+                    <h3>Оптимизация кампаний для сервиса</h3>
+                    <p>Снижение CPA на 25%, рост заявок на 60%</p>
+                    <a href="#" target="_blank">Смотреть кейс</a>
+                </div>
+            </div>
+            <div class="project fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Проект+4" alt="Проект 4">
+                <div class="project-content">
+                    <h3>Ведение рекламы для B2B-компании</h3>
+                    <p>Глубокая аналитика, кастомные отчёты, стратегия роста</p>
+                    <a href="#" target="_blank">Смотреть кейс</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сертификаты -->
+    <section id="certificates" class="fade-in">
+        <h2>Сертификаты и дипломы</h2>
+        <div class="certificates-grid">
+            <div class="cert fade-in">
+                <img src="https://via.placeholder.com/300x180?text=Сертификат+1" alt="Сертификат 1">
+                <div class="cert-content">
+                    <h3>Яндекс.Директ</h3>
+                    <p>Учебный центр "Веб-школа", 2023</p>
+                </div>
+            </div>
+            <div class="cert fade-in">
+                <img src="https://via.placeholder.com/300x180?text=Сертификат+2" alt="Сертификат 2">
+                <div class="cert-content">
+                    <h3>Яндекс.Метрика</h3>
+                    <p>Платформа "Stepik", 2022</p>
+                </div>
+            </div>
+            <div class="cert fade-in">
+                <img src="https://via.placeholder.com/300x180?text=Сертификат+3" alt="Сертификат 3">
+                <div class="cert-content">
+                    <h3>UX/UI Дизайн</h3>
+                    <p>Курсы "Skillbox", 2021</p>
+                </div>
+            </div>
+            <div class="cert fade-in">
+                <img src="https://via.placeholder.com/300x180?text=Сертификат+4" alt="Сертификат 4">
+                <div class="cert-content">
+                    <h3>Диплом о высшем образовании</h3>
+                    <p>КГУ, специальность "Информационные технологии", 2018</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section id="contact" class="fade-in">
+        <h2>Свяжитесь со мной</h2>
+
+        <!-- Соцсети -->
+        <div class="contact-socials">
+            <a href="https://github.com/romzes40" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://t.me/RoMzes40" target="_blank" title="Telegram">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="mailto:moderntourist@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <p class="contact-or">Или оставьте заявку здесь:</p>
+
+        <form id="contactForm" action="https://formspree.io/f/ВАШ-ИДЕНТИФИКАТОР" method="POST">
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Сообщение</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn">Отправить</button>
+            <div id="formStatus"></div>
+        </form>
+    </section>
+
+    <!-- Кнопка "Наверх" -->
+    <button id="scrollToTop" title="Наверх">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Шапка -->
+    <header>
+        <!-- Бургер-меню (на мобильных) -->
+        <div class="burger">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <!-- Логотип (на десктопе) -->
+        <div class="logo">
+            <i class="fas fa-arrow-right"></i> romzes40
+        </div>
+
+        <!-- Меню на десктопе -->
+        <div class="desktop-menu">
+            <ul class="nav-left">
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#about" class="nav-link">Обо мне</a></li>
+            </ul>
+
+            <button class="header-contact-btn">
+                Связаться со мной
+            </button>
+
+            <ul class="nav-right">
+                <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+                <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
+            </ul>
+        </div>
+
+        <!-- Мобильное меню (в бургере) -->
+        <nav class="mobile-menu">
+            <ul>
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#about" class="nav-link">Обо мне</a></li>
+                <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+                <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script src="script.js"></script>
+</body>
+</html>
