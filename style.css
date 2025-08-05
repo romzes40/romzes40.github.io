@@ -5,19 +5,26 @@
     box-sizing: border-box;
 }
 
-body {
+/* === Основные стили === */
+html, body {
+    width: 100%;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
     font-family: 'Inter', 'Segoe UI', sans-serif;
     line-height: 1.6;
     color: #333;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
     background-attachment: fixed;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Плавный скролл по всей странице */
 }
 
-/* === Все секции === */
+/* === Все секции — без белой полосы === */
 section {
-    min-height: 100vh;
+    min-height: 100dvh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,13 +32,14 @@ section {
     max-width: 1400px;
     margin: 0 auto;
     width: 100%;
+    overflow: hidden;
 }
 
 /* === Анимации === */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Быстрее */
 }
 
 .fade-in.visible {
@@ -78,7 +86,7 @@ section {
     text-decoration: none;
     font-weight: 600;
     border-radius: 50px;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease; /* Быстрее */
     border: none;
     cursor: pointer;
     font-size: 1.1rem;
@@ -136,7 +144,7 @@ section {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: all 0.4s ease;
+    transition: all 0.3s ease; /* Быстрее */
 }
 
 .project:hover {
@@ -148,26 +156,11 @@ section {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
 .project:hover img {
     transform: scale(1.1);
-}
-
-.project-content {
-    padding: 1.5rem;
-}
-
-.project a {
-    color: #FFD700;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.project a:hover {
-    color: white;
 }
 
 /* === Сертификаты === */
@@ -175,7 +168,7 @@ section {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 .cert:hover {
@@ -183,7 +176,7 @@ section {
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* === Шапка — всегда синяя === */
+/* === Шапка — всегда синяя, компактная на мобильных === */
 header {
     position: fixed;
     top: 0;
@@ -191,23 +184,24 @@ header {
     z-index: 1000;
     background: #2575fc;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: 0.8rem 0;
+    padding-top: calc(0.7rem + env(safe-area-inset-top));
+    padding-bottom: 0.7rem;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    height: 70px;
+    height: 60px; /* Уменьшена высота шапки */
 }
 
 /* === Кнопка "Связаться" в шапке === */
 .header-contact-btn {
     background: #FFD700;
     color: #000;
-    padding: 0.8rem 1.6rem;
+    padding: 0.7rem 1.4rem;
     border: none;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
@@ -259,7 +253,7 @@ header {
     font-weight: 500;
     font-size: 1.1rem;
     position: relative;
-    transition: color 0.3s, transform 0.3s;
+    transition: all 0.3s ease; /* Анимация для всех пунктов */
 }
 
 .nav-links a::after {
@@ -270,7 +264,7 @@ header {
     width: 0;
     height: 2px;
     background: #FFD700;
-    transition: width 0.3s;
+    transition: width 0.3s ease; /* Быстрее */
 }
 
 .nav-links a:hover::after {
@@ -285,10 +279,10 @@ header {
 /* === Кнопка "Наверх" === */
 #scrollToTop {
     position: fixed;
-    bottom: 30px;
+    bottom: calc(30px + env(safe-area-inset-bottom));
     right: 30px;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     background: #2575fc;
     color: white;
     border: none;
@@ -297,10 +291,10 @@ header {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     z-index: 1000;
     box-shadow: 0 8px 20px rgba(37, 117, 252, 0.5);
 }
@@ -337,7 +331,7 @@ header {
 
 .contact-socials a {
     color: white;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .contact-socials a:hover {
@@ -425,7 +419,7 @@ header {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.5s ease-out;
+    transition: opacity 0.4s ease-out;
 }
 
 #preloader.fade-out {
@@ -439,7 +433,7 @@ header {
     border: 6px solid #f3f3f3;
     border-top: 6px solid #2575fc;
     border-radius: 50%;
-    animation: spin 1.2s linear infinite;
+    animation: spin 1s linear infinite; /* Быстрее */
 }
 
 @keyframes spin {
@@ -456,44 +450,27 @@ header {
 
 /* =============== МОБИЛЬНАЯ ВЕРСИЯ =============== */
 @media (max-width: 768px) {
-    #home h1 {
-        font-size: 2.8rem;
-    }
-
-    #home p {
-        font-size: 1.2rem;
-    }
-
-    section {
-        padding: 2.5rem 5%;
-    }
-
-    /* Шапка */
     header {
-        padding: 0.8rem 0;
-        justify-content: center;
-        height: auto;
-        min-height: 70px;
+        height: 56px; /* Ещё компактнее на мобильных */
+        padding-top: calc(0.6rem + env(safe-area-inset-top));
+        padding-bottom: 0.6rem;
     }
 
-    /* Логотип — скрыт */
     .logo {
         display: none;
     }
 
-    /* Бургер — вместо логотипа */
     .burger {
         position: absolute;
         left: 5%;
-        top: 1.2rem;
+        top: 1rem;
         cursor: pointer;
         z-index: 101;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         color: white;
         transition: transform 0.3s ease;
     }
 
-    /* Анимация стрелки */
     .burger.open i {
         transform: rotate(180deg);
     }
@@ -502,50 +479,28 @@ header {
         transition: transform 0.3s ease;
     }
 
-    /* Меню */
     .nav-links {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: #2575fc;
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5rem 0;
-        gap: 1.8rem;
-        z-index: 100;
-        border-top: 1px solid rgba(255,255,255,0.2);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transition: clip-path 0.4s ease;
-    }
-
-    .nav-links.open {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        top: 60px;
+        padding: 1.2rem 0;
+        gap: 1.5rem;
     }
 
     .header-contact-btn {
-        position: absolute;
-        top: 1.2rem;
-        right: 5%;
-        z-index: 101;
+        top: 1rem;
         font-size: 0.9rem;
         padding: 0.6rem 1rem;
     }
 
-    /* Соцсети — компактнее */
     .contact-socials {
         gap: 1.5rem;
         font-size: 1.3rem;
-        margin-bottom: 0.8rem;
     }
 
-    /* Надпись */
     .contact-or {
         font-size: 1.1rem;
         margin: 0.8rem 0;
     }
 
-    /* Форма */
     #contact form {
         padding: 0 0.5rem;
         gap: 1rem;
@@ -554,20 +509,14 @@ header {
     .form-group input,
     .form-group textarea {
         padding: 0.7rem;
-        font-size: 1rem;
     }
 
-    .form-group textarea {
-        min-height: 100px;
-    }
-
-    .form-group label {
-        font-size: 0.95rem;
-    }
-
-    #contact button[type="submit"] {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
+    #scrollToTop {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        bottom: calc(20px + env(safe-area-inset-bottom));
+        right: 20px;
     }
 }
 
