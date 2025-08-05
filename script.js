@@ -9,73 +9,8 @@ window.addEventListener('load', () => {
                     preloader.remove();
                 }
             }, 500);
-        }, 500);
+        }, 600);
     }
-});
-
-// === Анимация шапки и логотипа ===
-const header = document.querySelector('header');
-const logo = document.getElementById('logo');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
-// === Тема ===
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('themeToggle');
-    const icon = themeToggle?.querySelector('i');
-    const body = document.body;
-
-    if (!themeToggle) return;
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    body.classList.remove('light-theme', 'dark-theme');
-    body.classList.add(savedTheme + '-theme');
-
-    if (icon) {
-        if (savedTheme === 'dark') {
-            icon.classList.replace('fa-moon', 'fa-sun');
-        } else {
-            icon.classList.replace('fa-sun', 'fa-moon');
-        }
-    }
-
-    themeToggle.addEventListener('click', () => {
-        if (body.classList.contains('light-theme')) {
-            body.classList.replace('light-theme', 'dark-theme');
-            localStorage.setItem('theme', 'dark');
-            if (icon) icon.classList.replace('fa-moon', 'fa-sun');
-        } else {
-            body.classList.replace('dark-theme', 'light-theme');
-            localStorage.setItem('theme', 'light');
-            if (icon) icon.classList.replace('fa-sun', 'fa-moon');
-        }
-    });
-});
-
-// === Бургер-меню ===
-const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
-const headerRight = document.querySelector('.header-right');
-
-burger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    headerRight.classList.toggle('open');
-    burger.classList.toggle('open');
-});
-
-// Скрытие меню после клика
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        headerRight.classList.remove('open');
-        burger.classList.remove('open');
-    });
 });
 
 // === Анимации при прокрутке ===
@@ -90,10 +25,30 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeElements.forEach(el => observer.observe(el));
 
+// === Бургер-меню ===
+const burger = document.querySelector('.burger');
+const navLinks = document.querySelector('.nav-links');
+const headerRight = document.querySelector('.header-right');
+
+burger?.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    headerRight.classList.toggle('open');
+    burger.classList.toggle('open');
+});
+
+// Скрытие меню после клика
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        headerRight.classList.remove('open');
+        burger.classList.remove('open');
+    });
+});
+
 // === Кнопка "Наверх" ===
 const scrollToTopBtn = document.getElementById('scrollToTop');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
+    if (window.scrollY > 600) {
         scrollToTopBtn.classList.add('show');
     } else {
         scrollToTopBtn.classList.remove('show');
