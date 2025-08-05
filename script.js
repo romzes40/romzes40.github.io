@@ -54,6 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // === Кнопка "Связаться со мной" ===
+    document.querySelector('.header-contact-btn')?.addEventListener('click', () => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+
     // === Форма ===
     const form = document.getElementById('contactForm');
     const status = document.getElementById('formStatus');
