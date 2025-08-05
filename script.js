@@ -13,16 +13,25 @@ window.addEventListener('load', () => {
     }
 });
 
+// === Анимация шапки и логотипа ===
+const header = document.querySelector('header');
+const logo = document.getElementById('logo');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
 // === Тема ===
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
     const icon = themeToggle?.querySelector('i');
     const body = document.body;
 
-    if (!themeToggle) {
-        console.warn('Кнопка #themeToggle не найдена');
-        return;
-    }
+    if (!themeToggle) return;
 
     const savedTheme = localStorage.getItem('theme') || 'light';
     body.classList.remove('light-theme', 'dark-theme');
@@ -49,6 +58,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// === Бургер-меню ===
+const burger = document.querySelector('.burger');
+const navLinks = document.querySelector('.nav-links');
+const headerRight = document.querySelector('.header-right');
+
+burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    headerRight.classList.toggle('open');
+    burger.classList.toggle('open');
+});
+
+// Скрытие меню после клика
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        headerRight.classList.remove('open');
+        burger.classList.remove('open');
+    });
+});
+
 // === Анимации при прокрутке ===
 const fadeElements = document.querySelectorAll('.fade-in');
 const observer = new IntersectionObserver((entries) => {
@@ -61,37 +90,13 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeElements.forEach(el => observer.observe(el));
 
-// === Бургер-меню ===
-const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
-
-burger?.addEventListener('click', () => {
-    navLinks?.classList.toggle('open');
-});
-
-// === Подсветка активного пункта меню ===
-const sections = document.querySelectorAll('section');
-const navLinksAll = document.querySelectorAll('.nav-link');
-
-const makeActive = () => {
-    let index = sections.length;
-    while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
-    navLinksAll.forEach(link => link.classList.remove('active'));
-    navLinksAll[index]?.classList.add('active');
-};
-
-window.addEventListener('scroll', makeActive);
-window.addEventListener('load', makeActive);
-
 // === Кнопка "Наверх" ===
 const scrollToTopBtn = document.getElementById('scrollToTop');
 window.addEventListener('scroll', () => {
-    if (scrollToTopBtn) {
-        if (window.scrollY > 500) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
-        }
+    if (window.scrollY > 500) {
+        scrollToTopBtn.classList.add('show');
+    } else {
+        scrollToTopBtn.classList.remove('show');
     }
 });
 scrollToTopBtn?.addEventListener('click', () => {
@@ -160,21 +165,3 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.log('Ошибка:', err));
     });
 }
-
-// === Анимация шапки при прокрутке ===
-const header = document.querySelector('header');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
-// Запуск при загрузке (на случай, если страница открыта не с начала)
-window.addEventListener('load', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    }
-});
