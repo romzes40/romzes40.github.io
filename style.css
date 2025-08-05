@@ -491,6 +491,17 @@ nav {
         display: block;
     }
 
+    @media (max-width: 768px) {
+    .social-icons,
+    #themeToggle {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+
     .nav-links {
         position: absolute;
         top: 70px;
@@ -528,4 +539,5 @@ nav {
         right: 4%;
     }
 }
+
 
