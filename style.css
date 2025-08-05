@@ -323,9 +323,42 @@ header {
 }
 
 #contact h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
+/* Соцсети в контактах */
+.contact-socials {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-socials a {
+    color: white;
+    transition: transform 0.3s;
+}
+
+.contact-socials a:hover {
+    transform: scale(1.1);
+    color: #FFD700;
+}
+
+/* Надпись "Или оставьте заявку здесь:" */
+.contact-or {
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    margin: 1.5rem 0;
+    font-weight: 500;
+}
+
+/* Форма */
 #contact form {
     max-width: 600px;
     margin: 0 auto;
@@ -353,7 +386,6 @@ header {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    max-width: 100%;
     padding: 0.9rem;
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 10px;
@@ -444,18 +476,30 @@ header {
         min-height: 70px;
     }
 
+    /* Логотип — скрыт */
     .logo {
-        left: 5%;
-        font-size: 1.4rem;
+        display: none;
     }
 
-    .header-contact-btn {
+    /* Бургер — вместо логотипа */
+    .burger {
         position: absolute;
+        left: 5%;
         top: 1.2rem;
-        right: 5%;
+        cursor: pointer;
         z-index: 101;
-        font-size: 0.9rem;
-        padding: 0.7rem 1.2rem;
+        font-size: 1.5rem;
+        color: white;
+        transition: transform 0.3s ease;
+    }
+
+    /* Анимация стрелки */
+    .burger.open i {
+        transform: rotate(180deg);
+    }
+
+    .burger i {
+        transition: transform 0.3s ease;
     }
 
     /* Меню */
@@ -479,41 +523,22 @@ header {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
-    .burger {
-        display: block;
+    .header-contact-btn {
         position: absolute;
-        right: 5%;
         top: 1.2rem;
+        right: 5%;
         z-index: 101;
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
     }
 
-    .burger-line {
-        width: 30px;
-        height: 3px;
-        background: white;
-        margin: 6px 0;
-        border-radius: 2px;
+    /* Форма — адаптивная */
+    .contact-or {
+        font-size: 1.1rem;
     }
 
-    .burger.open .burger-line:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .burger.open .burger-line:nth-child(2) {
-        opacity: 0;
-    }
-
-    .burger.open .burger-line:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-
-    /* Форма на мобильных */
-    #contact form {
-        padding: 0 1rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        max-width: none;
+    .contact-socials {
+        gap: 1.5rem;
+        font-size: 1.3rem;
     }
 }
