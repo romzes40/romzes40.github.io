@@ -1,42 +1,39 @@
-/* Обнуление */
+/* === Обнуление === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     line-height: 1.6;
-    background: #f8f9fa;
-    color: #1a1a1a;
-    transition: background-color 0.4s, color 0.4s;
+    color: #333;
+    background-color: #f8f9fa;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Темы */
+/* === Темы === */
 .light-theme {
     --bg: #f8f9fa;
-    --text: #1a1a1a;
+    --text: #333;
     --card-bg: #fff;
-    --btn-bg: #000;
-    --btn-text: #fff;
-    --btn-outline: #000;
     --shadow: rgba(0,0,0,0.1);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --btn-bg: #2575fc;
+    --btn-text: white;
 }
 
 .dark-theme {
     --bg: #121212;
-    --text: #f1f1f1;
+    --text: #e0e0e0;
     --card-bg: #1e1e1e;
-    --btn-bg: #fff;
-    --btn-text: #000;
-    --btn-outline: #fff;
     --shadow: rgba(0,0,0,0.3);
+    --header-bg: rgba(30, 30, 30, 0.95);
+    --btn-bg: #6a11cb;
+    --btn-text: white;
 }
 
 body {
@@ -44,21 +41,19 @@ body {
     color: var(--text);
 }
 
-/* Секции */
-.section {
+/* === Все секции — по высоте экрана === */
+section {
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    padding: 4rem 5%;
-}
-
-.container {
-    max-width: 1200px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 5%;
+    max-width: 1400px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* Анимации */
+/* === Анимации === */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -70,177 +65,230 @@ body {
     transform: translateY(0);
 }
 
-/* Главная */
+/* === Главная секция === */
 #home {
-    flex-direction: column;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
     text-align: center;
-    gap: 1.5rem;
 }
 
-.title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.1;
+#home h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
-.highlight {
-    color: #000;
-    position: relative;
-}
-
-.dark-theme .highlight {
-    color: #fff;
-}
-
-.subtitle {
+#home p {
     font-size: 1.3rem;
-    opacity: 0.8;
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 700px;
+    margin: 0 auto 2rem;
 }
 
-/* Кнопки */
 .btn {
     display: inline-block;
-    padding: 0.9rem 2rem;
+    padding: 0.8rem 1.8rem;
     background: var(--btn-bg);
     color: var(--btn-text);
     text-decoration: none;
-    font-weight: 500;
-    border-radius: 30px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: transform 0.3s;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: scale(1.05);
 }
 
-.btn-outline {
-    background: transparent;
-    color: var(--btn-outline);
-    border: 1px solid var(--btn-outline);
-}
-
-.btn-outline:hover {
-    background: var(--btn-outline);
-    color: var(--bg);
-}
-
-/* Заголовки */
-.section-title {
-    font-size: 2.5rem;
+/* === Заголовки === */
+h2 {
+    font-size: 2.2rem;
     margin-bottom: 2rem;
-    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
 }
 
-.text-block {
-    max-width: 700px;
+p {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* === Обо мне === */
+#about {
+    background: var(--card-bg);
+    text-align: center;
+}
+
+#about .content {
+    max-width: 800px;
     margin: 0 auto;
-    font-size: 1.1rem;
-    line-height: 1.8;
 }
 
-.text-block p {
-    margin-bottom: 1.2rem;
-}
-
-/* Портфолио */
-.projects-grid {
+/* === Портфолио === */
+.portfolio-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    margin-top: 1rem;
 }
 
-.project-card {
+.project {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
-    text-decoration: none;
-    color: var(--text);
-    box-shadow: 0 10px 30px var(--shadow);
-    transition: transform 0.4s;
+    box-shadow: 0 4px 15px var(--shadow);
+    transition: transform 0.3s;
 }
 
-.project-card:hover {
+.project:hover {
     transform: translateY(-5px);
 }
 
-.project-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
+.project img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
 }
 
-.project-info {
-    padding: 1.5rem;
+.project-content {
+    padding: 1.3rem;
 }
 
-.project-info h3 {
+.project h3 {
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
+    color: #2c3e50;
 }
 
-.project-info p {
-    opacity: 0.7;
-    font-size: 0.95rem;
+.project a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
 }
 
-/* Контакты */
-#contact {
-    text-align: center;
-    flex-direction: column;
+/* === Сертификаты === */
+#certificates {
+    background: #f1f5f9;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
 }
 
-.contact-text {
+.cert {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+.cert img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.cert-content {
+    padding: 1rem;
+}
+
+.cert h3 {
     font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    opacity: 0.8;
+    margin-bottom: 0.5rem;
 }
 
-/* Кнопка "Наверх" */
-#scrollToTop {
+/* === Шапка === */
+header {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: var(--btn-bg);
-    color: var(--btn-text);
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s;
+    top: 0;
+    width: 100%;
     z-index: 1000;
-    font-size: 1.1rem;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-#scrollToTop.show {
-    opacity: 1;
-    visibility: visible;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-#scrollToTop:hover {
-    transform: scale(1.1);
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
 }
 
-/* Переключатель темы */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3498db;
+    transition: width 0.3s;
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: #3498db;
+}
+
+/* === Соцсети === */
+.social-icons {
+    position: absolute;
+    top: 1rem;
+    right: 5%;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+    z-index: 100;
+}
+
+.social-icons a {
+    color: #2c3e50;
+    transition: color 0.3s;
+}
+
+.dark-theme .social-icons a {
+    color: #e0e0e0;
+}
+
+.social-icons a:hover {
+    color: #3498db;
+}
+
+/* === Переключатель темы === */
 #themeToggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+    position: absolute;
+    top: 1rem;
+    right: 4%;
+    width: 46px;
+    height: 46px;
     background: var(--card-bg);
     color: var(--text);
     border: 1px solid var(--shadow);
@@ -250,32 +298,229 @@ body {
     justify-content: center;
     cursor: pointer;
     font-size: 1.1rem;
-    z-index: 1000;
+    z-index: 100;
     transition: transform 0.3s;
 }
 
-#themeToggle:hover {
+#themeToggle:hover i {
     transform: rotate(30deg);
 }
 
-/* Адаптив */
+/* === Кнопка "Наверх" === */
+#scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+    z-index: 1000;
+}
+
+#scrollToTop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#scrollToTop:hover {
+    background: #1a252f;
+}
+
+/* === PWA Install Prompt === */
+#installPrompt {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
+    max-width: 300px;
+    text-align: center;
+    border: 1px solid var(--shadow);
+}
+
+#installPrompt button {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#installBtn {
+    background: var(--btn-bg);
+    color: white;
+}
+
+#installClose {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* === Форма === */
+#contact {
+    background: var(--card-bg);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    transition: border 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--btn-bg);
+    outline: none;
+}
+
+#formStatus {
+    margin-top: 1rem;
+    color: #d32f2f;
+}
+
+/* === Preloader === */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#preloader p {
+    margin-top: 1rem;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+/* === Печать PDF === */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #print-resume, #print-resume * {
+        visibility: visible;
+    }
+    #print-resume {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        font-size: 12pt;
+        color: #000;
+    }
+    header, #scrollToTop, #themeToggle, .burger, .social-icons, #contactForm, #installPrompt {
+        display: none !important;
+    }
+    .portfolio-grid, .certificates-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .project img, .cert img {
+        height: 120px;
+    }
+}
+
+/* === Мобильная адаптация === */
 @media (max-width: 768px) {
-    .title {
-        font-size: 2.5rem;
+    .burger {
+        display: block;
     }
 
-    .section-title {
-        font-size: 2rem;
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease;
+        gap: 1rem;
+        z-index: 100;
     }
 
-    .projects-grid {
+    .nav-links.open {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .portfolio-grid,
+    .certificates-grid {
         grid-template-columns: 1fr;
     }
 
-    #scrollToTop,
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .social-icons {
+        right: 5%;
+    }
+
     #themeToggle {
-        width: 45px;
-        height: 45px;
-        font-size: 1rem;
+        right: 4%;
     }
 }
