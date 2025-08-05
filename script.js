@@ -25,30 +25,42 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeElements.forEach(el => observer.observe(el));
 
-// === Бургер-меню ===
-const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
+// === Бургер-меню — с защитой от null ===
+document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
 
-burger?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    navLinks.classList.toggle('open');
-    burger.classList.toggle('open');
-});
-
-// Скрытие меню при клике на ссылку
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        burger.classList.remove('open');
-    });
-});
-
-// Скрытие меню при клике вне его
-document.addEventListener('click', (e) => {
-    if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
-        navLinks.classList.remove('open');
-        burger.classList.remove('open');
+    if (!burger || !navLinks) {
+        console.error('burger или navLinks не найдены');
+        return;
     }
+
+    // Убедимся, что меню изначально закрыто
+    navLinks.classList.remove('open');
+    burger.classList.remove('open');
+
+    // Клик по бургеру
+    burger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('open');
+        burger.classList.toggle('open');
+    });
+
+    // Клик по пункту меню
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            burger.classList.remove('open');
+        });
+    });
+
+    // Клик вне меню
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+            navLinks.classList.remove('open');
+            burger.classList.remove('open');
+        }
+    });
 });
 
 // === Кнопка "Наверх" ===
