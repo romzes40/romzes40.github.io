@@ -201,45 +201,33 @@ header {
     font-size: 0.9rem;
 }
 
-/* === Навигация === */
-.nav-links {
+/* === Меню: левая и правая части === */
+.nav-left,
+.nav-right {
     display: flex;
     list-style: none;
     gap: 2.5rem;
-    position: absolute;
-    right: 220px; /* Оставим место для кнопки справа */
 }
 
-.nav-links a {
+.nav-link {
     text-decoration: none;
     color: white;
-    font-weight: 500;
-    font-size: 1.1rem;
-    position: relative;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    /* Белый текст с чёрной обводкой */
+    text-shadow: 
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #FFD700;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.nav-links a:hover {
+.nav-link:hover {
     color: #FFD700;
-    transform: scale(1.05);
 }
 
-/* === Кнопка "Связаться со мной" в шапке === */
+/* === Кнопка "Связаться со мной" === */
 .header-contact-btn {
     background: #FFD700;
     color: #000;
