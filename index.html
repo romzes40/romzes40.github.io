@@ -20,10 +20,10 @@
 
     <!-- Главная секция -->
     <section id="home" class="fade-in">
-        <h1>Привет, я — [Твоё имя]</h1>
+        <h1>Привет, я — <span class="highlight">[Твоё имя]</span></h1>
         <p>Frontend-разработчик | Создаю красивые и функциональные веб-решения</p>
-        <a href="#portfolio" class="btn">Смотреть проекты</a>
-        <button id="downloadPdf" class="btn" style="margin-top: 1rem;">Скачать резюме (PDF)</button>
+        <a href="#portfolio" class="btn btn-yellow">Смотреть проекты</a>
+        <button id="downloadPdf" class="btn btn-yellow" style="margin-top: 1rem;">Скачать резюме (PDF)</button>
     </section>
 
     <!-- Обо мне -->
@@ -135,45 +135,46 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-<!-- Шапка -->
-<header>
- <nav>
-    <div class="logo">Портфолио</div>
+    <!-- Шапка с анимацией логотипа, бургером и темой -->
+    <header>
+        <nav>
+            <div class="logo" id="logo">ФАМИКОМ</div>
 
-    <ul class="nav-links">
-        <li><a href="#home" class="nav-link">Главная</a></li>
-        <li><a href="#about" class="nav-link">Обо мне</a></li>
-        <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
-        <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
-        <li><a href="#contact" class="nav-link">Контакты</a></li>
-    </ul>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#about" class="nav-link">Обо мне</a></li>
+                <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+                <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
+            </ul>
 
-    <!-- Соцсети + Переключатель темы -->
-    <div class="header-right">
-        <div class="social-icons-header">
-            <a href="https://github.com/romzes40" target="_blank" title="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://t.me/твой-ник" target="_blank" title="Telegram">
-                <i class="fab fa-telegram"></i>
-            </a>
-            <a href="mailto:you@example.com" title="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-        </div>
+            <!-- Соцсети + Переключатель темы -->
+            <div class="header-right">
+                <div class="social-icons-header">
+                    <a href="https://github.com/romzes40" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://t.me/твой-ник" target="_blank" title="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="mailto:you@example.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
 
-        <!-- Переключатель темы -->
-        <button id="themeToggle" title="Сменить тему">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
+                <button id="themeToggle" title="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
 
-    <!-- Бургер-меню -->
-    <div class="burger">
-        <i class="fas fa-bars"></i>
-    </div>
-</nav>
-</header>
+            <!-- Бургер-меню -->
+            <div class="burger">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+        </nav>
+    </header>
 
     <!-- PWA Подсказка -->
     <div id="installPrompt" class="hidden">
@@ -221,5 +222,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
