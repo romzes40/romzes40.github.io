@@ -260,33 +260,35 @@ nav {
 
 /* === Соцсети === */
 .social-icons {
-    position: absolute;
+    position: fixed;
     top: 1rem;
-    right: 5%;
+    right: 1rem;
     display: flex;
     gap: 1rem;
     font-size: 1.2rem;
     z-index: 100;
+    background: var(--card-bg);
+    border: 1px solid var(--shadow);
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .social-icons a {
-    color: #2c3e50;
-    transition: color 0.3s;
-}
-
-.dark-theme .social-icons a {
-    color: #e0e0e0;
+    color: var(--text);
+    transition: color 0.3s, transform 0.3s;
 }
 
 .social-icons a:hover {
     color: #3498db;
+    transform: scale(1.1);
 }
 
 /* === Переключатель темы === */
 #themeToggle {
-    position: absolute;
+    position: fixed;
     top: 1rem;
-    right: 4%;
+    right: 1rem;
     width: 46px;
     height: 46px;
     background: var(--card-bg);
@@ -299,11 +301,13 @@ nav {
     cursor: pointer;
     font-size: 1.1rem;
     z-index: 100;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-#themeToggle:hover i {
+#themeToggle:hover {
     transform: rotate(30deg);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
 /* === Кнопка "Наверх" === */
@@ -524,3 +528,4 @@ nav {
         right: 4%;
     }
 }
+
