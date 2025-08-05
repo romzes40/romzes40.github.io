@@ -53,7 +53,7 @@
                 <img src="https://via.placeholder.com/400x200?text=Проект+2" alt="Проект 2">
                 <div class="project-content">
                     <h3>Реклама для интернет-магазина</h3>
-                    <p>Настройка РСЯ, ретаргетинг, автоматические стратегии</p>
+                    <p>Настройка РСЯ, ремаркетинг, автоматические стратегии</p>
                     <a href="#" target="_blank">Смотреть кейс</a>
                 </div>
             </div>
@@ -114,6 +114,22 @@
     <!-- Форма обратной связи -->
     <section id="contact" class="fade-in">
         <h2>Свяжитесь со мной</h2>
+
+        <!-- Соцсети -->
+        <div class="contact-socials">
+            <a href="https://github.com/romzes40" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://t.me/RoMzes40" target="_blank" title="Telegram">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="mailto:moderntourist@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <p class="contact-or">Или оставьте заявку здесь:</p>
+
         <form id="contactForm" action="https://formspree.io/f/ВАШ-ИДЕНТИФИКАТОР" method="POST">
             <div class="form-group">
                 <label for="name">Имя</label>
@@ -137,8 +153,14 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Шапка с кнопкой "Связаться" -->
+    <!-- Шапка -->
     <header>
+        <!-- Бургер-меню (на мобильных) -->
+        <div class="burger">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <!-- Логотип (на десктопе) -->
         <div class="logo">
             <i class="fas fa-arrow-right"></i> romzes40
         </div>
@@ -151,20 +173,12 @@
             <li><a href="#contact" class="nav-link">Контакты</a></li>
         </ul>
 
+        <!-- Кнопка "Связаться" в шапке -->
         <button class="header-contact-btn">
             Связаться со мной
         </button>
-
-        <!-- Бургер-меню -->
-        <div class="burger">
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-        </div>
     </header>
- 
+
     <script src="script.js"></script>
 </body>
 </html>
-
-
