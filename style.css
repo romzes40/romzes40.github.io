@@ -222,6 +222,79 @@ header {
     transform: rotate(180deg);
 }
 
+/* === Десктопное меню === */
+.desktop-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s ease;
+    text-shadow: 
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #FFD700;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #FFD700;
+}
+
+/* === Кнопка "Связаться" === */
+.header-contact-btn {
+    background: #FFD700;
+    color: #000;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    z-index: 101;
+    white-space: nowrap;
+}
+
+.header-contact-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+}
+
 /* === Мобильное меню (выпадает вверх) === */
 .mobile-menu {
     position: fixed;
@@ -263,8 +336,7 @@ header {
     transition: color 0.3s ease;
 }
 
-.mobile-menu a:hover,
-.mobile-menu a.active {
+.mobile-menu a:hover {
     color: #FFD700;
 }
 
@@ -464,6 +536,11 @@ header {
         display: block;
     }
 
+    /* Скрываем десктопное меню */
+    .desktop-menu {
+        display: none;
+    }
+
     /* Показываем мобильное меню */
     .mobile-menu {
         display: block;
@@ -492,9 +569,9 @@ header {
 /* === Убираем стрелку на десктопе === */
 @media (min-width: 769px) {
     .burger {
-        display: none !important;
+        display: none;
     }
     .mobile-menu {
-        display: none !important;
+        display: none;
     }
 }
