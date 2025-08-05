@@ -211,6 +211,7 @@ header {
     z-index: 101;
     font-size: 1.4rem;
     color: white;
+    display: none;
 }
 
 .burger i {
@@ -453,10 +454,12 @@ header {
         justify-content: center;
     }
 
+    /* Скрываем логотип */
     .logo {
         display: none;
     }
 
+    /* Показываем бургер */
     .burger {
         display: block;
     }
@@ -489,7 +492,7 @@ header {
 /* === Убираем стрелку на десктопе === */
 @media (min-width: 769px) {
     .burger {
-        display: none;
+        display: none !important;
     }
     .mobile-menu {
         display: none !important;
