@@ -1,11 +1,11 @@
-/* === Обнуление — КРИТИЧЕСКИ ВАЖНО === */
+/* === Обнуление === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* === Базовые стили === */
+/* === Основные стили === */
 html, body {
     width: 100%;
     min-height: 100vh;
@@ -21,16 +21,13 @@ html, body {
     scroll-behavior: smooth;
 }
 
-/* === Убираем ВЕСЬ лишний скролл === */
+/* === Убираем скачки на мобильных === */
 body {
-    overflow-y: auto !important;
-    position: relative;
-    min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* === Все секции — без лишней высоты === */
+/* === Все секции === */
 section {
-    /* Убираем min-height — он создаёт превышение */
     min-height: auto;
     display: flex;
     flex-direction: column;
@@ -39,18 +36,39 @@ section {
     max-width: 1400px;
     margin: 0 auto;
     width: 100%;
-    /* Убедимся, что не создаём лишний скролл */
-    overflow: hidden;
 }
 
-/* === Главная секция — с компенсацией шапки === */
+/* === Главная секция — компенсация шапки сверху === */
 #home {
+    min-height: 100vh;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
     text-align: center;
     position: relative;
     z-index: 10;
-    min-height: 100vh;
-    padding-top: 6rem; /* Компенсируем высоту шапки */
-    padding-bottom: 4rem;
+}
+
+#home h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+#home p {
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 
 /* === Кнопки === */
@@ -152,10 +170,9 @@ section {
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* === Шапка — фиксированная, но не мешает скроллу === */
+/* === Шапка — на десктопе сверху, на мобильных — снизу === */
 header {
     position: fixed;
-    top: 0;
     width: 100%;
     z-index: 1000;
     background: #2575fc;
@@ -166,8 +183,8 @@ header {
     align-items: center;
     gap: 2rem;
     height: 60px;
-    /* Важно: не добавляет высоту в поток */
-    transform: translateZ(0);
+    /* По умолчанию — сверху */
+    top: 0;
 }
 
 /* === Кнопка "Связаться" в шапке === */
@@ -426,9 +443,12 @@ header {
 
 /* =============== МОБИЛЬНАЯ ВЕРСИЯ =============== */
 @media (max-width: 768px) {
+    /* Шапка — внизу экрана */
     header {
-        height: 56px;
+        top: auto;
+        bottom: 0;
         padding: 0.6rem 0;
+        height: 56px;
     }
 
     .logo {
@@ -438,7 +458,8 @@ header {
     .burger {
         position: absolute;
         left: 5%;
-        top: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
         cursor: pointer;
         z-index: 101;
         font-size: 1.4rem;
@@ -454,9 +475,10 @@ header {
         transform: rotate(180deg);
     }
 
+    /* Меню — выпадает вверх */
     .nav-links {
         position: fixed;
-        top: 56px;
+        bottom: 56px; /* Под шапкой */
         left: 0;
         right: 0;
         background: #2575fc;
@@ -465,13 +487,13 @@ header {
         padding: 1.2rem 0;
         gap: 1.5rem;
         z-index: 100;
-        border-top: 1px solid rgba(255,255,255,0.2);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
         transition: clip-path 0.4s ease;
     }
 
     .nav-links.open {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
     }
 
     .header-contact-btn {
@@ -483,20 +505,22 @@ header {
         padding: 0.6rem 1rem;
     }
 
+    /* Адаптация секций */
     section {
         padding: 3rem 5%;
     }
 
     #home,
     #contact {
-        padding-top: 5rem;
+        padding-top: 4rem;
+        padding-bottom: 5rem; /* Под шапку снизу */
     }
 
     #scrollToTop {
         width: 50px;
         height: 50px;
         font-size: 1.2rem;
-        bottom: 20px;
+        bottom: 80px;
         right: 20px;
     }
 }
