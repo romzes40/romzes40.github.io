@@ -486,7 +486,7 @@ header {
         transform: rotate(180deg);
     }
 
-    /* Скрываем nav-wrapper по умолчанию */
+    /* Меню — по умолчанию скрыто */
     .nav-wrapper {
         position: fixed;
         bottom: 56px;
@@ -500,7 +500,7 @@ header {
         gap: 1.5rem;
         z-index: 100;
         border-bottom: 1px solid rgba(255,255,255,0.2);
-        /* По умолчанию — скрыто */
+        /* Скрыто по умолчанию */
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
         transition: clip-path 0.4s ease;
     }
@@ -510,7 +510,7 @@ header {
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
     }
 
-    /* На мобильных — вертикальное меню */
+    /* Вертикальное меню */
     .nav-left,
     .nav-right {
         flex-direction: column;
