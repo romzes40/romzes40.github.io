@@ -332,7 +332,7 @@ header {
     justify-content: center;
     gap: 2rem;
     font-size: 1.5rem;
-    margin-bottom: 0.8rem; /* Уменьшен отступ */
+    margin-bottom: 0.8rem;
 }
 
 .contact-socials a {
@@ -354,7 +354,7 @@ header {
          1px -1px 0 #000,
         -1px  1px 0 #000,
          1px  1px 0 #000;
-    margin: 1rem 0; /* Уменьшен отступ сверху и снизу */
+    margin: 1rem 0;
     font-weight: 500;
 }
 
@@ -465,7 +465,7 @@ header {
     }
 
     section {
-        padding: 3rem 5%;
+        padding: 2.5rem 5%;
     }
 
     /* Шапка */
@@ -529,17 +529,45 @@ header {
         right: 5%;
         z-index: 101;
         font-size: 0.9rem;
-        padding: 0.7rem 1.2rem;
+        padding: 0.6rem 1rem;
     }
 
-    /* Форма — адаптивная */
-    .contact-or {
-        font-size: 1.1rem;
-    }
-
+    /* Соцсети — компактнее */
     .contact-socials {
         gap: 1.5rem;
         font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+
+    /* Надпись */
+    .contact-or {
+        font-size: 1.1rem;
+        margin: 0.8rem 0;
+    }
+
+    /* Форма */
+    #contact form {
+        padding: 0 0.5rem;
+        gap: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.7rem;
+        font-size: 1rem;
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+
+    #contact button[type="submit"] {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
 }
 
