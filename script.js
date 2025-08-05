@@ -54,36 +54,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === Кнопка "Связаться со мной" ===
+    // === Кнопка "Связаться со мной" (десктоп и мобильная) ===
     document.querySelector('.header-contact-btn')?.addEventListener('click', () => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // === Форма ===
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-
-    form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        if (status) status.textContent = 'Отправка...';
-
-        try {
-            const res = await fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (res.ok) {
-                if (status) status.textContent = 'Сообщение отправлено!';
-                form.reset();
-                setTimeout(() => { if (status) status.textContent = ''; }, 3000);
-            } else {
-                throw new Error();
-            }
-        } catch (err) {
-            if (status) status.textContent = 'Ошибка. Попробуйте позже.';
-        }
+    document.querySelector('.mobile-contact-btn')?.addEventListener('click', () => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
+
+    // === Кнопка "Назад" ===
+    document.querySelector('.mobile-back-btn')?.addEventListener('click', () => {
+        history.back();
+    });
+
+    // === Бургер-меню ===
+    const burger = document.querySelector('.burger');
+    const mobileMenu = document.querySelector('.mobile-dropdown-menu');
+
+    if (burger && mobileMenu) {
+        burger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('open');
+            burger.classList.toggle('open');
+        });
+
+        // Закрытие при клике на пункт
+        document.querySelectorAll('.mobile-dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                burger.classList.remove('open');
+            });
+        });
+
+        // Закрытие при клике вне меню
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !burger.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+                burger.classList.remove('open');
+            }
+        });
+    }
 });
