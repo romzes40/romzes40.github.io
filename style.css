@@ -449,12 +449,15 @@ header {
         bottom: 0;
         padding: 0.6rem 0;
         height: 56px;
+        justify-content: center;
     }
 
+    /* Логотип — скрыт */
     .logo {
         display: none;
     }
 
+    /* Бургер-меню — слева, как стрелка */
     .burger {
         position: absolute;
         left: 5%;
@@ -475,10 +478,10 @@ header {
         transform: rotate(180deg);
     }
 
-    /* Меню — выпадает вверх */
+    /* Меню — выпадает вверх, изначально скрыто */
     .nav-links {
         position: fixed;
-        bottom: 56px; /* Под шапкой */
+        bottom: 56px;
         left: 0;
         right: 0;
         background: #2575fc;
@@ -496,11 +499,13 @@ header {
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
     }
 
+    /* Кнопка "Связаться" — по центру шапки */
     .header-contact-btn {
-        position: absolute;
-        top: 50%;
-        right: 5%;
-        transform: translateY(-50%);
+        position: static;
+        margin: 0 auto;
+        transform: none;
+        top: auto;
+        right: auto;
         font-size: 0.9rem;
         padding: 0.6rem 1rem;
     }
@@ -513,7 +518,7 @@ header {
     #home,
     #contact {
         padding-top: 4rem;
-        padding-bottom: 5rem; /* Под шапку снизу */
+        padding-bottom: 5rem;
     }
 
     #scrollToTop {
