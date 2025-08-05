@@ -27,7 +27,6 @@
         <h1>Привет, я — <span class="highlight">Роман</span></h1>
         <p>Специалист по контекстной рекламе в Яндекс</p>
         <a href="#portfolio" class="btn btn-yellow">Смотреть проекты</a>
-        <button id="downloadPdf" class="btn btn-yellow" style="margin-top: 1rem;">Скачать резюме (PDF)</button>
     </section>
 
     <!-- Обо мне -->
@@ -139,47 +138,33 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Шапка с логотипом-стрелкой -->
+    <!-- Шапка с кнопкой "Связаться" по центру -->
     <header>
-        <nav>
-            <div class="logo">
-                <i class="fas fa-arrow-right"></i> romzes40
-            </div>
+        <div class="logo">
+            <i class="fas fa-arrow-right"></i> romzes40
+        </div>
 
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Главная</a></li>
-                <li><a href="#about" class="nav-link">Обо мне</a></li>
-                <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
-                <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
-                <li><a href="#contact" class="nav-link">Контакты</a></li>
-            </ul>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Главная</a></li>
+            <li><a href="#about" class="nav-link">Обо мне</a></li>
+            <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+            <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
+            <li><a href="#contact" class="nav-link">Контакты</a></li>
+        </ul>
 
-            <!-- Соцсети + Переключатель темы -->
-            <div class="header-right">
-                <div class="social-icons-header">
-                    <a href="https://github.com/romzes40" target="_blank" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://t.me/RoMzes40" target="_blank" title="Telegram">
-                        <i class="fab fa-telegram"></i>
-                    </a>
-                    <a href="mailto:moderntourist@gmail.com" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
+        <button class="header-contact-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+            Связаться со мной
+        </button>
 
-                <button id="themeToggle" title="Сменить тему">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
+        <button id="themeToggle" title="Сменить тему">
+            <i class="fas fa-moon"></i>
+        </button>
 
-            <!-- Бургер-меню -->
-            <div class="burger">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-            </div>
-        </nav>
+        <div class="burger">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </div>
     </header>
 
     <!-- PWA Подсказка -->
@@ -187,42 +172,6 @@
         <p>Установить приложение на устройство?</p>
         <button id="installBtn">Установить</button>
         <button id="installClose">×</button>
-    </div>
-
-    <!-- Скрытый блок для печати PDF -->
-    <div id="print-resume" style="display: none;">
-        <h1>Роман Черняев</h1>
-        <p><strong>Директолог</strong></p>
-        <p>Email: moderntourist@gmail.com | Телефон: +7 (920) 610-99-06</p>
-        <p>GitHub: github.com/romzes40 | Telegram: @RoMzes40</p>
-
-        <h2>Обо мне</h2>
-        <p>Директолог с опытом более 1 года. Настраиваю и веду кампании Яндекс.Директ профессионально. Использую Яндекс Тег Менеджер — Вам не придётся переделывать сайт для отслеживания конверсий.</p>
-
-        <h2>Навыки</h2>
-        <ul>
-            <li>Яндекс.Директ</li>
-            <li>Яндекс.Метрика</li>
-            <li>Яндекс Тег Менеджер</li>
-            <li>Аналитика и отчётность</li>
-            <li>Оптимизация конверсий</li>
-        </ul>
-
-        <h2>Опыт работы</h2>
-        <p><strong>Директолог</strong> — ООО "ТехноЛаб", 2021 — настоящее время</p>
-        <ul>
-            <li>Разработка и настройка рекламных кампаний</li>
-            <li>Оптимизация, A/B тестирование, ремаркетинг</li>
-            <li>Еженедельная отчётность и рекомендации</li>
-        </ul>
-
-        <h2>Образование</h2>
-        <p>Магистр информационных технологий, КГУ, 2018</p>
-
-        <h2>Портфолио</h2>
-        <p>• Увеличение конверсии на 40% для клиники<br>
-           • Снижение CPA на 25% для интернет-магазина<br>
-           • Ведение B2B-кампаний с ростом заявок на 60%</p>
     </div>
 
     <script src="script.js"></script>
