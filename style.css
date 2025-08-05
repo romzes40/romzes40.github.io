@@ -24,6 +24,7 @@ body {
     --header-bg: rgba(255, 255, 255, 0.95);
     --btn-bg: #2575fc;
     --btn-text: white;
+    --nav-link-color: #ffffff;
 }
 
 .dark-theme {
@@ -34,6 +35,7 @@ body {
     --header-bg: rgba(30, 30, 30, 0.95);
     --btn-bg: #6a11cb;
     --btn-text: white;
+    --nav-link-color: #ffffff;
 }
 
 body {
@@ -83,6 +85,7 @@ section {
     margin: 0 auto 2rem;
 }
 
+/* === Кнопки === */
 .btn {
     display: inline-block;
     padding: 0.8rem 1.8rem;
@@ -91,10 +94,28 @@ section {
     text-decoration: none;
     font-weight: bold;
     border-radius: 50px;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* === Жёлтые кнопки === */
+.btn-yellow {
+    background: #FFD700;
+    color: #000;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.btn-yellow:hover {
+    background: #FFC107;
     transform: scale(1.05);
 }
 
@@ -197,17 +218,40 @@ p {
     margin-bottom: 0.5rem;
 }
 
-/* === Шапка и навигация === */
+/* === Шапка — изначально прозрачная === */
 header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    transition: all 0.4s ease;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 1px solid transparent;
+}
+
+/* === Шапка при прокрутке === */
+header.scrolled {
     background: var(--header-bg);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-bottom-color: rgba(0,0,0,0.1);
 }
 
+/* === Логотип === */
+.logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--nav-link-color);
+    transition: color 0.4s ease, transform 0.4s ease;
+}
+
+header.scrolled .logo {
+    color: var(--nav-link-color);
+    transform: scale(1.05);
+}
+
+/* === Навигация === */
 nav {
     display: flex;
     justify-content: space-between;
@@ -215,12 +259,6 @@ nav {
     padding: 1rem 5%;
     max-width: 1400px;
     margin: 0 auto;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2c3e50;
 }
 
 .nav-links {
@@ -231,10 +269,11 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: #2c3e50;
+    color: var(--nav-link-color);
     font-weight: 500;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.3s;
     position: relative;
+    font-size: 1.1rem;
 }
 
 .nav-links a::after {
@@ -244,21 +283,26 @@ nav {
     left: 0;
     width: 0;
     height: 2px;
-    background: #3498db;
+    background: #FFD700;
     transition: width 0.3s;
 }
 
-.nav-links a.active::after,
 .nav-links a:hover::after {
     width: 100%;
 }
 
-.nav-links a.active,
 .nav-links a:hover {
-    color: #3498db;
+    color: #FFD700;
+    transform: scale(1.05);
 }
 
-/* === Соцсети в шапке === */
+/* === Элементы справа в шапке: соцсети + тема === */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
 .social-icons-header {
     display: flex;
     gap: 1.2rem;
@@ -266,97 +310,17 @@ nav {
 }
 
 .social-icons-header a {
-    color: #2c3e50;
+    color: var(--nav-link-color);
     transition: color 0.3s, transform 0.3s;
-}
-
-.dark-theme .social-icons-header a {
-    color: #e0e0e0;
 }
 
 .social-icons-header a:hover {
-    color: #3498db;
+    color: #FFD700;
     transform: scale(1.1);
 }
 
-/* === Бургер-меню === */
-.burger {
-    display: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #2c3e50;
-}
-
-/* === Мобильная версия === */
-@media (max-width: 768px) {
-    .burger {
-        display: block;
-    }
-
-    .nav-links, .social-icons-header {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 0;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transition: clip-path 0.4s ease;
-        gap: 1.5rem;
-        z-index: 100;
-    }
-
-    .nav-links.open {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-
-    .social-icons-header {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    }
-
-    .nav-links.open ~ .social-icons-header {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-
-    .logo {
-        z-index: 101;
-    }
-}
-
-/* === Соцсети === */
-.social-icons {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    gap: 1rem;
-    font-size: 1.2rem;
-    z-index: 100;
-    background: var(--card-bg);
-    border: 1px solid var(--shadow);
-    border-radius: 12px;
-    padding: 0.5rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.social-icons a {
-    color: var(--text);
-    transition: color 0.3s, transform 0.3s;
-}
-
-.social-icons a:hover {
-    color: #3498db;
-    transform: scale(1.1);
-}
-
-/* === Переключатель темы === */
+/* === Переключатель темы в шапке === */
 #themeToggle {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
     width: 46px;
     height: 46px;
     background: var(--card-bg);
@@ -368,14 +332,55 @@ nav {
     justify-content: center;
     cursor: pointer;
     font-size: 1.1rem;
-    z-index: 100;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    flex-shrink: 0;
 }
 
 #themeToggle:hover {
     transform: rotate(30deg);
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* === Бургер-меню === */
+.burger {
+    display: none;
+    cursor: pointer;
+    z-index: 101;
+    position: relative;
+    width: 30px;
+    height: 20px;
+}
+
+.burger-line {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: var(--nav-link-color);
+    border-radius: 1px;
+    opacity: 1;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.burger-line:nth-child(1) { top: 0; }
+.burger-line:nth-child(2) { top: 8px; }
+.burger-line:nth-child(3) { top: 16px; }
+
+/* Анимация бургера */
+.burger.open .burger-line:nth-child(1) {
+    top: 8px;
+    transform: rotate(45deg);
+}
+
+.burger.open .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.open .burger-line:nth-child(3) {
+    top: 8px;
+    transform: rotate(-45deg);
 }
 
 /* === Кнопка "Наверх" === */
@@ -396,6 +401,7 @@ nav {
     visibility: hidden;
     transition: opacity 0.4s, visibility 0.4s;
     z-index: 1000;
+    flex-shrink: 0;
 }
 
 #scrollToTop.show {
@@ -542,7 +548,7 @@ nav {
         font-size: 12pt;
         color: #000;
     }
-    header, #scrollToTop, #themeToggle, .burger, .social-icons, #contactForm, #installPrompt {
+    header, #scrollToTop, #themeToggle, .burger, .social-icons-header, #contactForm, #installPrompt {
         display: none !important;
     }
     .portfolio-grid, .certificates-grid {
@@ -553,65 +559,7 @@ nav {
     }
 }
 
-/* === Элементы справа в шапке: соцсети + тема === */
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-}
-
-.social-icons-header {
-    display: flex;
-    gap: 1.2rem;
-    font-size: 1.3rem;
-}
-
-.social-icons-header a {
-    color: #2c3e50;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.dark-theme .social-icons-header a {
-    color: #e0e0e0;
-}
-
-.social-icons-header a:hover {
-    color: #3498db;
-    transform: scale(1.1);
-}
-
-/* === Переключатель темы в шапке === */
-#themeToggle {
-    width: 46px;
-    height: 46px;
-    background: var(--card-bg);
-    color: var(--text);
-    border: 1px solid var(--shadow);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-#themeToggle:hover {
-    transform: rotate(30deg);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-
-/* === Бургер-меню === */
-.burger {
-    display: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #2c3e50;
-    z-index: 101;
-}
-
-/* === Мобильная версия === */
+/* === Мобильная адаптация === */
 @media (max-width: 768px) {
     .burger {
         display: block;
@@ -661,5 +609,10 @@ nav {
         width: 40px;
         height: 40px;
         font-size: 1rem;
+    }
+
+    .dark-theme .nav-links a,
+    .dark-theme .burger-line {
+        color: #e0e0e0;
     }
 }
