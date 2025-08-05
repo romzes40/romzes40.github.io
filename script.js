@@ -35,7 +35,6 @@ burger?.addEventListener('click', (e) => {
     burger.classList.toggle('open');
 });
 
-// Скрытие меню при клике на ссылку
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('open');
@@ -43,7 +42,6 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Скрытие меню при клике вне его
 document.addEventListener('click', (e) => {
     if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
         navLinks.classList.remove('open');
@@ -51,18 +49,28 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// === Кнопка "Наверх" ===
+// === Кнопка "Наверх" — исправлена ===
 const scrollToTopBtn = document.getElementById('scrollToTop');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 600) {
-        scrollToTopBtn.classList.add('show');
-    } else {
-        scrollToTopBtn.classList.remove('show');
-    }
-});
-scrollToTopBtn?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+
+// Проверяем, существует ли кнопка
+if (scrollToTopBtn) {
+    // Показываем/скрываем кнопку
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    });
+
+    // Прокрутка наверх
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
 
 // === Кнопка "Связаться" ===
 document.querySelector('.header-contact-btn')?.addEventListener('click', () => {
