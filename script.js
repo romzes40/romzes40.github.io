@@ -38,34 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeElements.forEach(el => observer.observe(el));
 
-    // === Бургер-меню ===
-    const burger = document.querySelector('.burger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-
-    if (burger && mobileMenu) {
-        burger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('open');
-            burger.classList.toggle('open');
-        });
-
-        // Закрытие при клике на пункт
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                burger.classList.remove('open');
-            });
-        });
-
-        // Закрытие при клике вне меню
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && !burger.contains(e.target)) {
-                mobileMenu.classList.remove('open');
-                burger.classList.remove('open');
-            }
-        });
-    }
-
     // === Кнопка "Наверх" ===
     const scrollToTopBtn = document.getElementById('scrollToTop');
     if (scrollToTopBtn) {
@@ -81,11 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-
-    // === Кнопка "Связаться" ===
-    document.querySelector('.header-contact-btn')?.addEventListener('click', () => {
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    });
 
     // === Форма ===
     const form = document.getElementById('contactForm');
