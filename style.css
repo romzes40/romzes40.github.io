@@ -18,10 +18,10 @@ html, body {
     color: #333;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
     background-attachment: fixed;
-    scroll-behavior: smooth; /* Плавный скролл по всей странице */
+    scroll-behavior: smooth;
 }
 
-/* === Все секции — без белой полосы === */
+/* === Все секции — без прокрутки и полос === */
 section {
     min-height: 100dvh;
     height: 100dvh;
@@ -39,7 +39,7 @@ section {
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease; /* Быстрее */
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in.visible {
@@ -86,7 +86,7 @@ section {
     text-decoration: none;
     font-weight: 600;
     border-radius: 50px;
-    transition: all 0.3s ease; /* Быстрее */
+    transition: all 0.3s ease;
     border: none;
     cursor: pointer;
     font-size: 1.1rem;
@@ -144,7 +144,7 @@ section {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: all 0.3s ease; /* Быстрее */
+    transition: all 0.3s ease;
 }
 
 .project:hover {
@@ -176,7 +176,7 @@ section {
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* === Шапка — всегда синяя, компактная на мобильных === */
+/* === Шапка — всегда синяя === */
 header {
     position: fixed;
     top: 0;
@@ -190,7 +190,7 @@ header {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    height: 60px; /* Уменьшена высота шапки */
+    height: 60px;
 }
 
 /* === Кнопка "Связаться" в шапке === */
@@ -253,7 +253,7 @@ header {
     font-weight: 500;
     font-size: 1.1rem;
     position: relative;
-    transition: all 0.3s ease; /* Анимация для всех пунктов */
+    transition: all 0.3s ease;
 }
 
 .nav-links a::after {
@@ -264,7 +264,7 @@ header {
     width: 0;
     height: 2px;
     background: #FFD700;
-    transition: width 0.3s ease; /* Быстрее */
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
@@ -433,7 +433,7 @@ header {
     border: 6px solid #f3f3f3;
     border-top: 6px solid #2575fc;
     border-radius: 50%;
-    animation: spin 1s linear infinite; /* Быстрее */
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -451,15 +451,17 @@ header {
 /* =============== МОБИЛЬНАЯ ВЕРСИЯ =============== */
 @media (max-width: 768px) {
     header {
-        height: 56px; /* Ещё компактнее на мобильных */
+        height: 56px;
         padding-top: calc(0.6rem + env(safe-area-inset-top));
         padding-bottom: 0.6rem;
     }
 
+    /* Скрыть логотип на мобильных */
     .logo {
         display: none;
     }
 
+    /* Бургер-меню */
     .burger {
         position: absolute;
         left: 5%;
@@ -471,31 +473,51 @@ header {
         transition: transform 0.3s ease;
     }
 
-    .burger.open i {
-        transform: rotate(180deg);
-    }
-
     .burger i {
         transition: transform 0.3s ease;
     }
 
+    .burger.open i {
+        transform: rotate(180deg);
+    }
+
+    /* Мобильное меню — скрыто по умолчанию */
     .nav-links {
-        top: 60px;
+        position: fixed;
+        top: 56px; /* Совпадает с высотой шапки */
+        left: 0;
+        right: 0;
+        background: #2575fc;
+        flex-direction: column;
+        align-items: center;
         padding: 1.2rem 0;
         gap: 1.5rem;
+        z-index: 100;
+        border-top: 1px solid rgba(255,255,255,0.2);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease;
+    }
+
+    .nav-links.open {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
     .header-contact-btn {
+        position: absolute;
         top: 1rem;
+        right: 5%;
+        z-index: 101;
         font-size: 0.9rem;
         padding: 0.6rem 1rem;
     }
 
-    .contact-socials {
-        gap: 1.5rem;
-        font-size: 1.3rem;
+    /* Убедимся, что контент не под шапкой */
+    section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
 
+    /* Адаптация формы */
     .contact-or {
         font-size: 1.1rem;
         margin: 0.8rem 0;
