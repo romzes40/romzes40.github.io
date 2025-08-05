@@ -197,7 +197,7 @@ p {
     margin-bottom: 0.5rem;
 }
 
-/* === Шапка === */
+/* === Шапка и навигация === */
 header {
     position: fixed;
     top: 0;
@@ -256,6 +256,74 @@ nav {
 .nav-links a.active,
 .nav-links a:hover {
     color: #3498db;
+}
+
+/* === Соцсети в шапке === */
+.social-icons-header {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 1.3rem;
+}
+
+.social-icons-header a {
+    color: #2c3e50;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.dark-theme .social-icons-header a {
+    color: #e0e0e0;
+}
+
+.social-icons-header a:hover {
+    color: #3498db;
+    transform: scale(1.1);
+}
+
+/* === Бургер-меню === */
+.burger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+/* === Мобильная версия === */
+@media (max-width: 768px) {
+    .burger {
+        display: block;
+    }
+
+    .nav-links, .social-icons-header {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease;
+        gap: 1.5rem;
+        z-index: 100;
+    }
+
+    .nav-links.open {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .social-icons-header {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .nav-links.open ~ .social-icons-header {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .logo {
+        z-index: 101;
+    }
 }
 
 /* === Соцсети === */
@@ -539,5 +607,6 @@ nav {
         right: 4%;
     }
 }
+
 
 
