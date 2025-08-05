@@ -201,78 +201,70 @@ header {
     font-size: 0.9rem;
 }
 
-/* === Обёртка меню === */
-.nav-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.nav-left,
-.nav-right {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
-}
-
-/* === Пункты меню — белые с чёрной обводкой, при наведении — жёлтые === */
-.nav-link {
-    text-decoration: none;
+/* === Бургер-иконка === */
+.burger {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 101;
+    font-size: 1.4rem;
     color: white;
-    font-weight: 600;
+}
+
+.burger i {
+    transition: transform 0.3s ease;
+}
+
+.burger.open i {
+    transform: rotate(180deg);
+}
+
+/* === Мобильное меню (выпадает вверх) === */
+.mobile-menu {
+    position: fixed;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    background: #2575fc;
+    padding: 1.2rem 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+    transition: clip-path 0.4s ease;
+    display: none;
+}
+
+.mobile-menu.open {
+    display: block;
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-menu a {
+    display: block;
+    color: white;
+    font-weight: 500;
     font-size: 1.1rem;
-    position: relative;
-    transition: color 0.3s ease;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
     text-shadow: 
         -1px -1px 0 #000,
          1px -1px 0 #000,
         -1px  1px 0 #000,
          1px  1px 0 #000;
+    transition: color 0.3s ease;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #FFD700;
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.nav-link:hover {
+.mobile-menu a:hover,
+.mobile-menu a.active {
     color: #FFD700;
-}
-
-/* === Кнопка "Связаться" === */
-.header-contact-btn {
-    background: #FFD700;
-    color: #000;
-    padding: 0.7rem 1.4rem;
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-    z-index: 101;
-    white-space: nowrap;
-}
-
-.header-contact-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
 }
 
 /* === Кнопка "Наверх" === */
@@ -461,69 +453,17 @@ header {
         justify-content: center;
     }
 
-    /* Скрываем логотип */
     .logo {
         display: none;
     }
 
-    /* Бургер — слева */
     .burger {
-        position: absolute;
-        left: 5%;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        z-index: 101;
-        font-size: 1.4rem;
-        color: white;
+        display: block;
     }
 
-    .burger i {
-        transition: transform 0.3s ease;
-    }
-
-    .burger.open i {
-        transform: rotate(180deg);
-    }
-
-    /* Меню — по умолчанию скрыто */
-    .nav-wrapper {
-        position: fixed;
-        bottom: 56px;
-        left: 0;
-        right: 0;
-        background: #2575fc;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1.2rem 0;
-        gap: 1.5rem;
-        z-index: 100;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-        /* Скрыто по умолчанию */
-        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-        transition: clip-path 0.4s ease;
-    }
-
-    /* При открытии — показываем */
-    .nav-wrapper.open {
-        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-    }
-
-    /* Вертикальное меню */
-    .nav-left,
-    .nav-right {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    /* Кнопка "Связаться" — по центру */
-    .header-contact-btn {
-        position: static;
-        margin: 0 auto;
-        transform: none;
-        font-size: 0.9rem;
-        padding: 0.6rem 1rem;
+    /* Показываем мобильное меню */
+    .mobile-menu {
+        display: block;
     }
 
     /* Адаптация секций */
@@ -550,5 +490,8 @@ header {
 @media (min-width: 769px) {
     .burger {
         display: none;
+    }
+    .mobile-menu {
+        display: none !important;
     }
 }
