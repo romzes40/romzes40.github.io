@@ -201,61 +201,25 @@ header {
     font-size: 0.9rem;
 }
 
-/* === Бургер-иконка === */
-.burger {
-    position: absolute;
-    left: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 101;
-    font-size: 1.4rem;
-    color: white;
-    display: none;
-}
-
-.burger i {
-    transition: transform 0.3s ease;
-}
-
-.burger.open i {
-    transform: rotate(180deg);
-}
-
-/* === Десктопное меню === */
-.desktop-menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.nav-left,
-.nav-right {
+/* === Навигация === */
+.nav-links {
     display: flex;
     list-style: none;
     gap: 2.5rem;
+    position: absolute;
+    right: 5%;
 }
 
-.nav-link {
+.nav-links a {
     text-decoration: none;
     color: white;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.1rem;
     position: relative;
-    transition: color 0.3s ease;
-    text-shadow: 
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
+    transition: all 0.3s ease;
 }
 
-.nav-link::after {
+.nav-links a::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -266,78 +230,13 @@ header {
     transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-links a:hover::after {
     width: 100%;
 }
 
-.nav-link:hover {
+.nav-links a:hover {
     color: #FFD700;
-}
-
-/* === Кнопка "Связаться" === */
-.header-contact-btn {
-    background: #FFD700;
-    color: #000;
-    padding: 0.7rem 1.4rem;
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-    z-index: 101;
-    white-space: nowrap;
-}
-
-.header-contact-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
-}
-
-/* === Мобильное меню (выпадает вверх) === */
-.mobile-menu {
-    position: fixed;
-    bottom: 60px;
-    left: 0;
-    right: 0;
-    background: #2575fc;
-    padding: 1.2rem 0;
-    z-index: 100;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-    transition: clip-path 0.4s ease;
-    display: none;
-}
-
-.mobile-menu.open {
-    display: block;
-    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-}
-
-.mobile-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.mobile-menu a {
-    display: block;
-    color: white;
-    font-weight: 500;
-    font-size: 1.1rem;
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
-    text-shadow: 
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-    transition: color 0.3s ease;
-}
-
-.mobile-menu a:hover {
-    color: #FFD700;
 }
 
 /* === Кнопка "Наверх" === */
@@ -517,33 +416,9 @@ header {
 
 /* =============== МОБИЛЬНАЯ ВЕРСИЯ =============== */
 @media (max-width: 768px) {
-    /* Шапка — внизу */
+    /* Удаляем шапку полностью на мобильных */
     header {
-        top: auto;
-        bottom: 0;
-        height: 56px;
-        padding: 0.6rem 0;
-        justify-content: center;
-    }
-
-    /* Скрываем логотип */
-    .logo {
         display: none;
-    }
-
-    /* Показываем бургер */
-    .burger {
-        display: block;
-    }
-
-    /* Скрываем десктопное меню */
-    .desktop-menu {
-        display: none;
-    }
-
-    /* Показываем мобильное меню */
-    .mobile-menu {
-        display: block;
     }
 
     /* Адаптация секций */
@@ -558,20 +433,10 @@ header {
     }
 
     #scrollToTop {
-        bottom: 80px;
-        right: 20px;
+        bottom: 30px;
+        right: 30px;
         width: 50px;
         height: 50px;
         font-size: 1.2rem;
-    }
-}
-
-/* === Убираем стрелку на десктопе === */
-@media (min-width: 769px) {
-    .burger {
-        display: none;
-    }
-    .mobile-menu {
-        display: none;
     }
 }
