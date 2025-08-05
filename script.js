@@ -87,38 +87,3 @@ form?.addEventListener('submit', async (e) => {
         if (status) status.textContent = 'Ошибка. Попробуйте позже.';
     }
 });
-
-// === PWA: подсказка об установке ===
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    const prompt = document.getElementById('installPrompt');
-    if (prompt) {
-        prompt.classList.remove('hidden');
-    }
-});
-
-document.getElementById('installBtn')?.addEventListener('click', () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-            deferredPrompt = null;
-            document.getElementById('installPrompt')?.classList.add('hidden');
-        });
-    }
-});
-
-document.getElementById('installClose')?.addEventListener('click', () => {
-    document.getElementById('installPrompt')?.classList.add('hidden');
-});
-
-// === Service Worker ===
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('SW зарегистрирован'))
-            .catch(err => console.log('Ошибка:', err));
-    });
-}
