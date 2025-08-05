@@ -99,101 +99,19 @@ section {
     box-shadow: 0 12px 25px rgba(255, 215, 0, 0.7);
 }
 
-/* === Белый текст с чёрной гранью === */
-#about .content,
-#portfolio,
-#certificates,
-#contact,
-#about h2,
-#portfolio h2,
-#certificates h2,
-#contact h2,
-#about p,
-#portfolio p,
-#certificates p,
-#contact p,
-.project-content h3,
-.project-content p,
-.cert-content h3,
-.cert-content p,
-#contact label {
-    color: white !important;
-    text-shadow: 
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-}
-
-/* === Портфолио — эффекты при наведении === */
-.project {
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-
-.project:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-
-.project img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.project:hover img {
-    transform: scale(1.1);
-}
-
-/* === Сертификаты === */
-.cert {
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-
-.cert:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-
-/* === Шапка — на десктопе сверху, на мобильных — снизу === */
+/* === Шапка === */
 header {
     position: fixed;
+    top: 0;
     width: 100%;
     z-index: 1000;
     background: #2575fc;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: 60px;
     padding: 0.7rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    height: 60px;
-    /* По умолчанию — сверху */
-    top: 0;
-}
-
-/* === Кнопка "Связаться" в шапке === */
-.header-contact-btn {
-    background: #FFD700;
-    color: #000;
-    padding: 0.7rem 1.4rem;
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-    z-index: 101;
-    align-self: center;
-    margin: 0;
 }
 
 /* === Логотип === */
@@ -234,28 +152,27 @@ header {
     color: white;
     font-weight: 500;
     font-size: 1.1rem;
-    position: relative;
     transition: all 0.3s ease;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #FFD700;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
 }
 
 .nav-links a:hover {
     color: #FFD700;
-    transform: scale(1.05);
+}
+
+/* === Кнопка "Связаться" === */
+.header-contact-btn {
+    background: #FFD700;
+    color: #000;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    z-index: 101;
+    margin: 0;
 }
 
 /* === Кнопка "Наверх" === */
@@ -291,156 +208,14 @@ header {
     background: #1a5ed1;
 }
 
-/* === Форма обратной связи === */
-#contact {
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    padding-top: 6rem;
-    padding-bottom: 4rem;
-}
-
-#contact h2 {
-    margin-bottom: 1.5rem;
-}
-
-/* Соцсети в контактах */
-.contact-socials {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
-}
-
-.contact-socials a {
-    color: white;
-    transition: transform 0.3s ease;
-}
-
-.contact-socials a:hover {
-    transform: scale(1.1);
-    color: #FFD700;
-}
-
-/* Надпись "Или оставьте заявку здесь:" */
-.contact-or {
-    font-size: 1.2rem;
-    color: white;
-    text-shadow: 
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-    margin: 1rem 0;
-    font-weight: 500;
-}
-
-/* Форма */
-#contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.form-group label {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: white;
-    text-align: left;
-    width: 100%;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.9rem;
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #FFD700;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-}
-
-#contact button[type="submit"] {
-    align-self: center;
-    margin-top: 1rem;
-}
-
-#formStatus {
-    margin-top: 1rem;
-    color: #d32f2f;
-    font-weight: 500;
-}
-
-/* === Preloader === */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #121212;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.4s ease-out;
-}
-
-#preloader.fade-out {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #2575fc;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#preloader p {
-    margin-top: 1.5rem;
-    color: #e0e0e0;
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
 /* =============== МОБИЛЬНАЯ ВЕРСИЯ =============== */
 @media (max-width: 768px) {
-    /* Шапка — внизу экрана */
     header {
         top: auto;
         bottom: 0;
-        padding: 0.6rem 0;
         height: 56px;
+        padding: 0.6rem 0;
+        justify-content: center;
     }
 
     .logo {
@@ -456,18 +231,8 @@ header {
         z-index: 101;
         font-size: 1.4rem;
         color: white;
-        transition: transform 0.3s ease;
     }
 
-    .burger i {
-        transition: transform 0.3s ease;
-    }
-
-    .burger.open i {
-        transform: rotate(180deg);
-    }
-
-    /* Меню — выпадает вверх, по умолчанию скрыто */
     .nav-links {
         position: fixed;
         bottom: 56px;
@@ -496,13 +261,11 @@ header {
         padding: 0.6rem 1rem;
     }
 
-    /* Адаптация секций */
     section {
         padding: 3rem 5%;
     }
 
-    #home,
-    #contact {
+    #home, #contact {
         padding-top: 4rem;
         padding-bottom: 5rem;
     }
@@ -510,6 +273,9 @@ header {
     #scrollToTop {
         bottom: 80px;
         right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 }
 
