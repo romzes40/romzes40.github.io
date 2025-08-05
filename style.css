@@ -318,23 +318,42 @@ header {
 /* === Форма обратной связи === */
 #contact {
     text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#contact h2 {
+    margin-bottom: 2rem;
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .form-group label {
-    display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: white;
+    text-align: left;
+    width: 100%;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    max-width: 500px;
+    max-width: 100%;
     padding: 0.9rem;
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 10px;
@@ -348,6 +367,11 @@ header {
     outline: none;
     border-color: #FFD700;
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+#contact button[type="submit"] {
+    align-self: center;
+    margin-top: 1rem;
 }
 
 #formStatus {
@@ -412,7 +436,7 @@ header {
         padding: 3rem 5%;
     }
 
-    /* Шапка — адаптивная */
+    /* Шапка */
     header {
         padding: 0.8rem 0;
         justify-content: center;
@@ -434,7 +458,7 @@ header {
         padding: 0.7rem 1.2rem;
     }
 
-    /* Меню — скрытое */
+    /* Меню */
     .nav-links {
         position: fixed;
         top: 70px;
@@ -453,11 +477,6 @@ header {
 
     .nav-links.open {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-
-    .nav-links a {
-        color: white !important;
-        font-size: 1.2rem;
     }
 
     .burger {
@@ -488,7 +507,11 @@ header {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 
-    /* Форма — на мобильных */
+    /* Форма на мобильных */
+    #contact form {
+        padding: 0 1rem;
+    }
+
     .form-group input,
     .form-group textarea {
         max-width: none;
