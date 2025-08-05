@@ -29,17 +29,26 @@ fadeElements.forEach(el => observer.observe(el));
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelector('.nav-links');
 
-burger?.addEventListener('click', () => {
+burger?.addEventListener('click', (e) => {
+    e.stopPropagation();
     navLinks.classList.toggle('open');
     burger.classList.toggle('open');
 });
 
-// Скрытие меню после клика
+// Скрытие меню при клике на ссылку
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('open');
         burger.classList.remove('open');
     });
+});
+
+// Скрытие меню при клике вне его
+document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
+    }
 });
 
 // === Кнопка "Наверх" ===
