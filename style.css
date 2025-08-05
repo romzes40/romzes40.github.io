@@ -220,13 +220,19 @@ header {
     gap: 2.5rem;
 }
 
+/* === Пункты меню — белые с чёрной обводкой, при наведении — жёлтые === */
 .nav-link {
     text-decoration: none;
     color: white;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.1rem;
     position: relative;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
+    text-shadow: 
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 
 .nav-link::after {
@@ -246,7 +252,6 @@ header {
 
 .nav-link:hover {
     color: #FFD700;
-    transform: scale(1.05);
 }
 
 /* === Кнопка "Связаться" === */
@@ -266,7 +271,6 @@ header {
 }
 
 .header-contact-btn:hover {
-    background: #FFC107;
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
 }
