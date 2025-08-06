@@ -38,22 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeElements.forEach(el => observer.observe(el));
 
-    // === Кнопка "Наверх" ===
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    if (scrollToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 600) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
     // === Кнопка "Связаться со мной" (десктоп и мобильная) ===
     document.querySelector('.header-contact-btn')?.addEventListener('click', () => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
@@ -63,9 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // === Кнопка "Назад" ===
-    document.querySelector('.mobile-back-btn')?.addEventListener('click', () => {
-        history.back();
+    // === Кнопка "Наверх" (мобильная) ===
+    document.querySelector('.mobile-top-btn')?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // === Бургер-меню ===
