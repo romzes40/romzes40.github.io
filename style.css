@@ -162,7 +162,7 @@ section {
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* === Шапка (десктопная) === */
+/* === Десктопная шапка === */
 .desktop-header {
     position: fixed;
     top: 0;
@@ -174,7 +174,6 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Убираем gap по умолчанию */
 }
 
 /* === Логотип === */
@@ -201,24 +200,18 @@ section {
     font-size: 0.9rem;
 }
 
-/* === Контейнер для меню (выравнивание по центру с кнопкой) === */
+/* === Контейнер меню — выравнивание по центру с кнопкой "Смотреть проекты" === */
 .nav-container {
     display: flex;
     align-items: center;
-    gap: 1.8rem; /* Немного уменьшили расстояние, чтобы сдвинуть вправо */
+    gap: 1.8rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem; /* Важно: увеличен отступ слева, чтобы сместить центр */
+    padding: 0 2rem;
 }
 
-/* === Меню слева === */
-.nav-left {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
-}
-
-/* === Меню справа === */
+/* === Меню слева и справа === */
+.nav-left,
 .nav-right {
     display: flex;
     list-style: none;
@@ -243,7 +236,7 @@ section {
     color: #FFD700;
 }
 
-/* === Кнопка "Связаться со мной" === */
+/* === Кнопка "Связаться со мной" (десктоп) === */
 .header-contact-btn {
     background: #FFD700;
     color: #000;
@@ -256,22 +249,44 @@ section {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
     white-space: nowrap;
-    /* Чтобы центр кнопки был опорной точкой */
-    transform: translateX(0);
 }
 
-/* === Адаптация для мобильной версии (не трогаем) === */
-@media (max-width: 768px) {
-    .desktop-header {
-        display: none;
-    }
+.header-contact-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
 }
 
-@media (min-width: 769px) {
-    .mobile-menu,
-    .mobile-dropdown-menu {
-        display: none !important;
-    }
+/* === Кнопка "Наверх" (десктоп) === */
+#scrollToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background: #2575fc;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.3rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 8px 20px rgba(37, 117, 252, 0.5);
+}
+
+#scrollToTop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#scrollToTop:hover {
+    transform: scale(1.1);
+    background: #1a5ed1;
 }
 
 /* === Мобильное меню (внизу) === */
@@ -551,6 +566,10 @@ section {
     #contact {
         padding-top: 4rem;
         padding-bottom: 6rem; /* Отступ под мобильное меню */
+    }
+
+    #scrollToTop {
+        display: none; /* Скрыта на мобильных */
     }
 }
 
