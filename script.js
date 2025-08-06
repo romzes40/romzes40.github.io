@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // === Кнопка "Наверх" (мобильная) — показывается при прокрутке ниже #home ===
+    // === Кнопка "Наверх" (мобильная) ===
     const mobileTopBtn = document.querySelector('.mobile-top-btn');
     const homeSection = document.getElementById('home');
 
@@ -110,4 +110,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // === Форма ===
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+
+    form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Проверка галочки
+        const consent = document.getElementById('privacyConsent');
+        if (!consent.checked) {
+            if (status) status.textContent = 'Вы должны согласиться с политикой конфиденциальности';
+            return;
+        }
+
+        const formData = new FormData(form);
+        if (status) status.textContent = 'Отправка...';
+
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (res.ok) {
+                if (status) status.textContent = 'Сообщение отправлено!';
+                form.reset();
+                setTimeout(() => { if (status) status.textContent = ''; }, 3000);
+            } else {
+                throw new Error();
+            }
+        } catch (err) {
+            if (status) status.textContent = 'Ошибка. Попробуйте позже.';
+        }
+    });
 });
