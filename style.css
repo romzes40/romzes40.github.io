@@ -162,7 +162,7 @@ section {
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* === Десктопная шапка === */
+/* === Шапка (десктопная) === */
 .desktop-header {
     position: fixed;
     top: 0;
@@ -174,7 +174,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    /* Убираем gap по умолчанию */
 }
 
 /* === Логотип === */
@@ -201,21 +201,37 @@ section {
     font-size: 0.9rem;
 }
 
-/* === Меню слева и справа === */
-.nav-left,
+/* === Контейнер для меню (выравнивание по центру с кнопкой) === */
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem; /* Немного уменьшили расстояние, чтобы сдвинуть вправо */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem; /* Важно: увеличен отступ слева, чтобы сместить центр */
+}
+
+/* === Меню слева === */
+.nav-left {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+/* === Меню справа === */
 .nav-right {
     display: flex;
     list-style: none;
     gap: 2.5rem;
 }
 
+/* === Пункты меню — белые с чёрной обводкой === */
 .nav-link {
     text-decoration: none;
     color: white;
     font-weight: 600;
     font-size: 0.95rem;
     transition: color 0.3s ease;
-    /* Белый текст с чёрной обводкой */
     text-shadow: 
         -1px -1px 0 #000,
          1px -1px 0 #000,
@@ -227,7 +243,7 @@ section {
     color: #FFD700;
 }
 
-/* === Кнопка "Связаться со мной" (десктоп) === */
+/* === Кнопка "Связаться со мной" === */
 .header-contact-btn {
     background: #FFD700;
     color: #000;
@@ -239,13 +255,23 @@ section {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-    z-index: 101;
     white-space: nowrap;
+    /* Чтобы центр кнопки был опорной точкой */
+    transform: translateX(0);
 }
 
-.header-contact-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+/* === Адаптация для мобильной версии (не трогаем) === */
+@media (max-width: 768px) {
+    .desktop-header {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu,
+    .mobile-dropdown-menu {
+        display: none !important;
+    }
 }
 
 /* === Мобильное меню (внизу) === */
