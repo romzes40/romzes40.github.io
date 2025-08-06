@@ -63,10 +63,25 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // === Кнопка "Наверх" (мобильная) ===
-    document.querySelector('.mobile-top-btn')?.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    // === Кнопка "Наверх" (мобильная) — показывается при прокрутке ниже #home ===
+    const mobileTopBtn = document.querySelector('.mobile-top-btn');
+    const homeSection = document.getElementById('home');
+
+    if (mobileTopBtn && homeSection) {
+        const homeHeight = homeSection.offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > homeHeight) {
+                mobileTopBtn.classList.add('show');
+            } else {
+                mobileTopBtn.classList.remove('show');
+            }
+        });
+
+        mobileTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // === Бургер-меню ===
     const burger = document.querySelector('.burger');
