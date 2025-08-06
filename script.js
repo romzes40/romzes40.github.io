@@ -14,7 +14,7 @@ setTimeout(() => {
 // === Основная загрузка ===
 document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
-
+    
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add('fade-out');
@@ -117,18 +117,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModal = document.querySelector('.close-modal');
 
     if (privacyPolicyLink && privacyPolicyModal && closeModal) {
-        privacyPolicyLink.addEventListener('click', () => {
+        // Открытие модального окна
+        privacyPolicyLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Предотвращаем переход
             privacyPolicyModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Блокируем скролл фона
         });
 
+        // Закрытие по крестику
         closeModal.addEventListener('click', () => {
             privacyPolicyModal.classList.remove('show');
+            document.body.style.overflow = ''; // Восстанавливаем скролл
         });
 
-        // Закрытие при клике вне модального окна
+        // Закрытие по клику вне окна
         privacyPolicyModal.addEventListener('click', (e) => {
             if (e.target === privacyPolicyModal) {
                 privacyPolicyModal.classList.remove('show');
+                document.body.style.overflow = '';
             }
         });
     }
