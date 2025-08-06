@@ -14,7 +14,7 @@ setTimeout(() => {
 // === Основная загрузка ===
 document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
-    
+
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add('fade-out');
@@ -107,6 +107,28 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!mobileMenu.contains(e.target) && !burger.contains(e.target)) {
                 mobileMenu.classList.remove('open');
                 burger.classList.remove('open');
+            }
+        });
+    }
+
+    // === Модальное окно для политики конфиденциальности ===
+    const privacyPolicyLink = document.getElementById('privacy-policy-link');
+    const privacyPolicyModal = document.getElementById('privacyPolicyModal');
+    const closeModal = document.querySelector('.close-modal');
+
+    if (privacyPolicyLink && privacyPolicyModal && closeModal) {
+        privacyPolicyLink.addEventListener('click', () => {
+            privacyPolicyModal.classList.add('show');
+        });
+
+        closeModal.addEventListener('click', () => {
+            privacyPolicyModal.classList.remove('show');
+        });
+
+        // Закрытие при клике вне модального окна
+        privacyPolicyModal.addEventListener('click', (e) => {
+            if (e.target === privacyPolicyModal) {
+                privacyPolicyModal.classList.remove('show');
             }
         });
     }
