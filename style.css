@@ -200,14 +200,15 @@ section {
     font-size: 0.9rem;
 }
 
-/* === Контейнер меню — выравнивание по центру с кнопкой "Смотреть проекты" === */
+/* === Контейнер меню — симметричное центрирование === */
 .nav-container {
     display: flex;
     align-items: center;
     gap: 1.8rem;
-    max-width: 1200px;
+    /* Полная ширина контейнера = ширина экрана - отступы слева/справа */
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 5%; /* 5% слева и справа — симметрия */
+    max-width: 1200px;
 }
 
 /* === Меню слева и справа === */
@@ -325,7 +326,7 @@ section {
     transition: all 0.3s ease;
 }
 
-/* === Кнопка "Связаться со мной" (мобильная) === */
+/* === Кнопка "Связаться со мной" (мобильная) — строго по центру экрана === */
 .mobile-contact-btn {
     background: #FFD700;
     color: #000;
@@ -339,10 +340,10 @@ section {
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
     white-space: nowrap;
     z-index: 101;
-}
-
-.mobile-contact-btn:hover {
-    transform: scale(1.05);
+    /* Абсолютная центровка по горизонтали */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* === Кнопка "Наверх" (мобильная) === */
@@ -353,6 +354,14 @@ section {
     font-size: 1.3rem;
     cursor: pointer;
     z-index: 101;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-top-btn.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 .mobile-top-btn i {
