@@ -145,11 +145,11 @@
             </div>
 
             <!-- Галочка согласия -->
-            <div class="form-group">
+            <div class="form-group checkbox-container">
                 <label class="checkbox-label">
                     <input type="checkbox" id="privacyConsent" required>
                     Отправляя данную форму, вы соглашаетесь с 
-                    <a href="https://romzes40.github.io/privacy-policy/" target="_blank">политикой конфиденциальности</a> сайта
+                    <a href="#" id="privacy-policy-link">политикой конфиденциальности</a> сайта
                 </label>
             </div>
 
@@ -189,6 +189,19 @@
                 <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
             </ul>
         </div>
+
+        <!-- Соцсети в шапке -->
+        <div class="header-socials">
+            <a href="https://t.me/RoMzes40" target="_blank" title="Telegram">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://vk.com/romzes40" target="_blank" title="ВКонтакте">
+                <i class="fab fa-vk"></i>
+            </a>
+            <a href="https://wa.me/79206109906" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
     </header>
 
     <!-- Мобильное меню (внизу) -->
@@ -219,6 +232,17 @@
             <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
             <li><a href="#certificates" class="nav-link">Сертификаты</a></li>
         </ul>
+    </div>
+
+    <!-- Модальное окно для политики конфиденциальности -->
+    <div id="privacyPolicyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Политика конфиденциальности</h2>
+            <p>Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006. №152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые Романом Альбертовичем Черняевым (далее – Оператор).</p>
+            <!-- Здесь можно добавить полный текст политики из файла соглашение.docx -->
+            <p>... Полный текст политики ...</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
