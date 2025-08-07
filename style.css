@@ -532,12 +532,19 @@ section {
          1px  1px 0 #000;
     line-height: 1.5;
     cursor: pointer;
+    display: flex;
+    align-items: flex-start;
 }
 
 .checkbox-label input[type="checkbox"] {
     margin-top: 0.2rem;
     transform: scale(1.2);
     cursor: pointer;
+    flex-shrink: 0;
+}
+
+.checkbox-label span {
+    display: inline;
 }
 
 .checkbox-label a {
@@ -579,6 +586,7 @@ section {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
 }
 
 .modal-content h2 {
@@ -627,6 +635,14 @@ section {
 .close-modal:focus {
     color: black;
     text-decoration: none;
+}
+
+/* === Сдвиг крестика на мобильных === */
+@media (max-width: 768px) {
+    .close-modal {
+        right: 0.8rem; /* Сдвинуто левее */
+        top: 0.8rem;
+    }
 }
 
 /* === Preloader === */
