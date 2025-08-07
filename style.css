@@ -541,6 +541,9 @@ section {
     transform: scale(1.2);
     cursor: pointer;
     flex-shrink: 0;
+    width: 18px; /* Фиксированная ширина */
+    height: 18px; /* Фиксированная высота */
+    margin-right: 0.5rem; /* Отступ справа */
 }
 
 .checkbox-label span {
